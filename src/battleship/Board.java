@@ -13,14 +13,15 @@ public class Board {
     public final static int NUM_ROWS = 10;
     public final static int NUM_COLUMNS = 10;
     private static Battleship mainClassInst;
-    private static Token p1Ships[][] = new Ship[NUM_ROWS][NUM_COLUMNS];
+    private static Ship p1Ships[][] = new Ship[NUM_ROWS][NUM_COLUMNS];
     private static Token p1Shots[][] = new Token[NUM_ROWS][NUM_COLUMNS];
-    private static Token p2Ships[][] = new Ship[NUM_ROWS][NUM_COLUMNS];
+    private static Ship p2Ships[][] = new Ship[NUM_ROWS][NUM_COLUMNS];
     private static Token p2Shots[][] = new Token[NUM_ROWS][NUM_COLUMNS];
 
     public static Image oceanBG = Toolkit.getDefaultToolkit().getImage("./assets/Ocean_Background.jpg");
     public static int mostRecentRow;
     public static int mostRecentCol;
+    public static boolean placingShips;
     
     public static void Reset() {
 
@@ -33,6 +34,7 @@ public class Board {
 
             }
         }
+        placingShips = true;
     }
 
 //    public static Token[][] getBoard() {
@@ -59,48 +61,105 @@ public class Board {
         }
         return currCol;
     }
+    public static int getRowShips(int y) {
+        int currRow = 0;
+        int ydelta = Window.getHeight2() / NUM_ROWS + Window.getHeight2()/2;
+        int currYVal = ydelta;
+        while (y > currYVal) {
+            System.out.println("MEOW");
+            currRow++;
+            currYVal += ydelta;
+        }
+        return currRow;
+    }
 
     public static boolean AddTokenPixel(int xpixel, int ypixel, boolean alreadyPlaced) {
-
-        if (xpixel < 0 || xpixel > Window.getWidth2() || ypixel < 0
-                || ypixel > Window.getHeight2() / 2) {
-            return false;
-        }
-
-        int currRow = getRow(ypixel);
         int currCol = getCol(xpixel);
 
-        if (Player.getCurrentPlayer() == Player.getPlayers()[0]) {
-            if (p1Shots[currRow][currCol] == null && !alreadyPlaced) {
-                p1Shots[currRow][currCol] = new Token(Player.getCurrentPlayer().getColor());
-
-                mostRecentRow = currRow;
-                mostRecentCol = currCol;
-                return true;
-            } else if (p1Shots[currRow][currCol] == null ) {
-                if (!p1Shots[mostRecentRow][mostRecentCol].isUnremovable())
-                    p1Shots[mostRecentRow][mostRecentCol] = null;
-                p1Shots[currRow][currCol] = new Token(Player.getCurrentPlayer().getColor());
-
-                mostRecentRow = currRow;
-                mostRecentCol = currCol;
-                return true;
+        if(placingShips) {
+            int currRow = getRowShips(ypixel);
+            if (xpixel < 0 || xpixel > Window.getWidth2() || ypixel < Window.getHeight2()/2
+                    || ypixel > Window.getHeight2()) {
+                return false;
             }
-        } else if (Player.getCurrentPlayer() == Player.getPlayers()[1]) {
-            if (p2Shots[currRow][currCol] == null && !alreadyPlaced) {
-                p2Shots[currRow][currCol] = new Token(Player.getCurrentPlayer().getColor());
+    //adding Ships        
+            if (Player.getCurrentPlayer() == Player.getPlayers()[0]) {
+                if (p1Ships[currRow][currCol] == null && !alreadyPlaced) {
+                    p1Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.SCOUT);
+            if (xpixel < 0 || xpixel > Window.getWidth2() || ypixel < 0
+                    || ypixel > Window.getHeight2() / 2) {
+                return false;
+            }
 
-                mostRecentRow = currRow;
-                mostRecentCol = currCol;
-                return true;
-            } else if (p2Shots[currRow][currCol] == null ) {
-                if (!p2Shots[mostRecentRow][mostRecentCol].isUnremovable())
-                    p2Shots[mostRecentRow][mostRecentCol] = null;
-                p2Shots[currRow][currCol] = new Token(Player.getCurrentPlayer().getColor());
+                    mostRecentRow = currRow;
+                    mostRecentCol = currCol;
+                    return true;
+                } else if (p1Ships[currRow][currCol] == null ) {
+                    if (!p1Ships[mostRecentRow][mostRecentCol].isUnremovable())
+                        p1Ships[mostRecentRow][mostRecentCol] = null;
+                    p1Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(),Ship.shipClass.SCOUT);
 
-                mostRecentRow = currRow;
-                mostRecentCol = currCol;
-                return true;
+                    mostRecentRow = currRow;
+                    mostRecentCol = currCol;
+                    return true;
+                }
+            } else if (Player.getCurrentPlayer() == Player.getPlayers()[1]) {
+                if (p2Ships[currRow][currCol] == null && !alreadyPlaced) {
+                    p2Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(),Ship.shipClass.SCOUT);
+
+                    mostRecentRow = currRow;
+                    mostRecentCol = currCol;
+                    return true;
+                } else if (p2Ships[currRow][currCol] == null ) {
+                    if (!p2Ships[mostRecentRow][mostRecentCol].isUnremovable())
+                        p2Ships[mostRecentRow][mostRecentCol] = null;
+                    p2Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(),Ship.shipClass.SCOUT);
+
+                    mostRecentRow = currRow;
+                    mostRecentCol = currCol;
+                    return true;
+                }
+            }
+        }
+        else {
+//adding Shots
+        int currRow = getRow(ypixel);
+            if (xpixel < 0 || xpixel > Window.getWidth2() || ypixel < 0
+                    || ypixel > Window.getHeight2() / 2) {
+                return false;
+            }        
+            if (Player.getCurrentPlayer() == Player.getPlayers()[0]) {
+                if (p1Shots[currRow][currCol] == null && !alreadyPlaced) {
+                    p1Shots[currRow][currCol] = new Token(Player.getCurrentPlayer().getColor());
+
+                    mostRecentRow = currRow;
+                    mostRecentCol = currCol;
+                    return true;
+                } else if (p1Shots[currRow][currCol] == null ) {
+                    if (!p1Shots[mostRecentRow][mostRecentCol].isUnremovable())
+                        p1Shots[mostRecentRow][mostRecentCol] = null;
+                    p1Shots[currRow][currCol] = new Token(Player.getCurrentPlayer().getColor());
+
+                    mostRecentRow = currRow;
+                    mostRecentCol = currCol;
+                    return true;
+                }
+            } else if (Player.getCurrentPlayer() == Player.getPlayers()[1]) {
+                if (p2Shots[currRow][currCol] == null && !alreadyPlaced) {
+                    p2Shots[currRow][currCol] = new Token(Player.getCurrentPlayer().getColor());
+
+                    mostRecentRow = currRow;
+                    mostRecentCol = currCol;
+                    return true;
+                } else if (p2Shots[currRow][currCol] == null ) {
+                    if (!p2Shots[mostRecentRow][mostRecentCol].isUnremovable())
+                        p2Shots[mostRecentRow][mostRecentCol] = null;
+                    p2Shots[currRow][currCol] = new Token(Player.getCurrentPlayer().getColor());
+
+                    mostRecentRow = currRow;
+                    mostRecentCol = currCol;
+                    return true;
+                }
             }
         }
         return false;
@@ -175,6 +234,24 @@ public class Board {
                 for (int zx = 0; zx < NUM_COLUMNS; zx++) {
                     if (p2Shots[zi][zx] != null) {
                         p2Shots[zi][zx].draw(g, zi, zx, xdelta, ydelta);
+                    }
+                }
+            }
+        }
+        if (Player.getCurrentPlayer() == Player.getPlayers()[0]) {
+            for (int zi = 0; zi < NUM_ROWS; zi++) {
+                for (int zx = 0; zx < NUM_COLUMNS; zx++) {
+                    if (p1Ships[zi][zx] != null) {
+                        System.out.println("PEEE");
+                        p1Ships[zi][zx].draw(g, zi, zx, xdelta, ydelta);
+                    }
+                }
+            }
+        } else {
+            for (int zi = 0; zi < NUM_ROWS; zi++) {
+                for (int zx = 0; zx < NUM_COLUMNS; zx++) {
+                    if (p2Ships[zi][zx] != null) {
+                        p2Ships[zi][zx].draw(g, zi, zx, xdelta, ydelta);
                     }
                 }
             }

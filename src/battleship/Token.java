@@ -10,7 +10,7 @@ import java.awt.Color;
 
 public class Token {
 
-    private Color color;
+    protected Color color;
     private int value;
     
     private boolean unremovable;

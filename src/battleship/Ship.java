@@ -35,7 +35,12 @@ public class Ship extends Token {
             health = 5;
         }
     }
+    public void draw(Graphics2D g, int row, int column, int xdelta, int ydelta) {
 
+        g.setColor(color);
+        g.fillRect(Window.getX(column * xdelta +6), Window.getY(row * ydelta +3)+ Window.getHeight2()/2,
+                    xdelta-12, ydelta -6);
+    }
     public shipClass getType() {
         return shipType;
     }
