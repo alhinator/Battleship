@@ -14,7 +14,12 @@ public class Token {
     private int value;
     
     private boolean unremovable;
-    
+ public static Image Submarine = Toolkit.getDefaultToolkit().getImage("./assets/Submarine.jpg");
+ public static Image Cruiser = Toolkit.getDefaultToolkit().getImage("./assets/Cruiser.png");
+ public static Image Scout = Toolkit.getDefaultToolkit().getImage("./assets/Scout.png");
+ public static Image Destroyer = Toolkit.getDefaultToolkit().getImage("./assets/Destroyer.png");
+ public static Image Carrier = Toolkit.getDefaultToolkit().getImage("./assets/Carrier.png");
+
     Token(Color _color) {
         color = _color;
         value = (int) (Math.random() * 5) + 1;
