@@ -13,15 +13,15 @@ public class Board {
     public final static int NUM_ROWS = 10;
     public final static int NUM_COLUMNS = 10;
     private static Battleship mainClassInst;
-    private static Token p1Ships[][] = new Token[NUM_ROWS][NUM_COLUMNS];
+    private static Token p1Ships[][] = new Ship[NUM_ROWS][NUM_COLUMNS];
     private static Token p1Shots[][] = new Token[NUM_ROWS][NUM_COLUMNS];
-    private static Token p2Ships[][] = new Token[NUM_ROWS][NUM_COLUMNS];
+    private static Token p2Ships[][] = new Ship[NUM_ROWS][NUM_COLUMNS];
     private static Token p2Shots[][] = new Token[NUM_ROWS][NUM_COLUMNS];
 
     public static Image oceanBG = Toolkit.getDefaultToolkit().getImage("./assets/Ocean_Background.jpg");
     public static int mostRecentRow;
     public static int mostRecentCol;
-
+    
     public static void Reset() {
 
         for (int zi = 0; zi < NUM_ROWS; zi++) {
