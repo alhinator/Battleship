@@ -14,7 +14,8 @@ public class Token {
     private int value;
     
     private boolean unremovable;
-    
+   
+
     Token(Color _color) {
         color = _color;
         value = (int) (Math.random() * 5) + 1;
