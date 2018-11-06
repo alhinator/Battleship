@@ -228,11 +228,12 @@ public class Battleship extends JFrame implements Runnable {
                 Window.xsize = getSize().width;
                 Window.ysize = getSize().height;
             }
-
             reset();
-
         }
 
+        
+        System.out.println("here i am in gitHub");
+        
     }
 
 ////////////////////////////////////////////////////////////////////////////
