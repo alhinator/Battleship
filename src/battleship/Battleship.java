@@ -15,7 +15,7 @@ public class Battleship extends JFrame implements Runnable {
     boolean freeze = false;
 
     boolean switchScreen = false;
-    boolean alreadyPlaced = false;
+    public static boolean alreadyPlaced = false;
     int win = 0;
 
     public static Image Screen1 = Toolkit.getDefaultToolkit().getImage("./assets/Screen1.jpg");
@@ -58,10 +58,9 @@ public class Battleship extends JFrame implements Runnable {
                         if (switchScreen) {
                             switchScreen = false;
                         } else {
-                            switchScreen = true;
-                            Board.confirm();
-                            Player.switchTurn();
-                            alreadyPlaced = false;
+                            
+                            if (Board.confirm()){switchScreen = true; Player.switchTurn(); alreadyPlaced = false;}
+                            
                         }
 
                     }

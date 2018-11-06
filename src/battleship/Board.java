@@ -101,12 +101,20 @@ public class Board {
         return false;
     }
     
-    public static void confirm(){
-        if (Player.getCurrentPlayer() == Player.getPlayers()[0])
-        p1Shots[mostRecentRow][mostRecentCol].setUnremovable();
-        else 
-        p2Shots[mostRecentRow][mostRecentCol].setUnremovable();
-            
+    public static boolean confirm(){
+        if (Player.getCurrentPlayer() == Player.getPlayers()[0]){
+            if (mainClassInst.alreadyPlaced){
+            p1Shots[mostRecentRow][mostRecentCol].setUnremovable();
+            return true;
+            }
+        }
+        else if (mainClassInst.alreadyPlaced){
+            p2Shots[mostRecentRow][mostRecentCol].setUnremovable();
+            return true;
+        }
+        
+        
+        return false;
     }
 
     public static void Draw(Graphics2D g) {
