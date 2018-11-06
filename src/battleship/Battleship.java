@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.geom.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.io.File;
+import java.awt.Color;
 
 public class Battleship extends JFrame implements Runnable {
 

@@ -1,7 +1,12 @@
 package battleship;
 
+import java.io.*;
 import java.awt.*;
+import java.awt.geom.*;
+import java.awt.event.*;
+import javax.swing.*;
 import java.io.File;
+import java.awt.Color;
 
 public class Board {
 
@@ -177,6 +182,23 @@ public class Board {
 
     }
 
+    public static boolean checkHit(int row, int col){
+        if (row>NUM_ROWS || col >NUM_COLUMNS || row<0 || col< 0){
+            return false;
+    }
+        
+        if (Player.getCurrentPlayer() == Player.getPlayers()[0]){
+            //check opposite board implementation
+        }
+        else if (Player.getCurrentPlayer() == Player.getPlayers()[1]){
+            //same code, but for diff player
+        }
+        
+        
+        
+        return false;
+    }    
+    
     //CheckWin now checks the whole board.
     public static boolean CheckWin() {
         return false;

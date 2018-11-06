@@ -1,18 +1,24 @@
 package battleship;
 
+import java.io.*;
 import java.awt.*;
+import java.awt.geom.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.io.File;
+import java.awt.Color;
 
 public class Token {
 
     private Color color;
     private int value;
-    private int shipType;
+    
     private boolean unremovable;
     
     Token(Color _color) {
         color = _color;
         value = (int) (Math.random() * 5) + 1;
-        //shipType?
+        
         unremovable = false;
 
     }
