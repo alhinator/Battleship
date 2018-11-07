@@ -273,7 +273,7 @@ public class Board {
         g.setColor(Color.black);
 
         for (int zi = 1; zi < NUM_ROWS; zi++) {
-            g.drawLine(Window.getX(0), Window.getY(zi * ydelta + Window.getHeight2() / 2),
+            g.drawLine(Window.getX(0), Window.getY(zi * ydelta + Window.getHeight2() /2),
                     Window.getX(Window.getWidth2()), Window.getY(zi * ydelta + Window.getHeight2() / 2));
         }
 

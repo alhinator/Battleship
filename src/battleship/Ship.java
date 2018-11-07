@@ -15,7 +15,7 @@ public class Ship extends Token {
     public static int p1ShipsPlaced = 0;
     public static int p2ShipsPlaced = 0;
     
-    public static Image Submarine = Toolkit.getDefaultToolkit().getImage("./assets/Submarine.jpg");
+    public static Image Submarine = Toolkit.getDefaultToolkit().getImage("./assets/Submarine.png");
     public static Image Cruiser = Toolkit.getDefaultToolkit().getImage("./assets/Cruiser.png");
     public static Image Scout = Toolkit.getDefaultToolkit().getImage("./assets/Scout.png");
     public static Image Destroyer = Toolkit.getDefaultToolkit().getImage("./assets/Destroyer.png");
