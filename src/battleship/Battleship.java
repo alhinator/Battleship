@@ -29,11 +29,10 @@ public class Battleship extends JFrame implements Runnable {
 
     public static void main(String[] args) {
         frame = new Battleship();
-        if (startScreen){
+        
             frame.setSize(Window.WINDOW_WIDTH_SMALL, Window.WINDOW_HEIGHT_SMALL);
-        }
-        else
-            frame.setSize(Window.WINDOW_WIDTH, Window.WINDOW_HEIGHT);
+        
+            
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
@@ -102,7 +101,7 @@ public class Battleship extends JFrame implements Runnable {
                 }
 
                 if (e.VK_UP == e.getKeyCode()) {
-                    startScreen = !startScreen;
+                    
                 } else if (e.VK_DOWN == e.getKeyCode()) {
 
                 } else if (e.VK_LEFT == e.getKeyCode()) {
@@ -261,5 +260,17 @@ public class Battleship extends JFrame implements Runnable {
         }
         relaxer = null;
     }
+    
+    
+    public void switchSize(){
+        startScreen = !startScreen;
+        
+        if (!startScreen)
+            frame.setSize(Window.WINDOW_WIDTH, Window.WINDOW_HEIGHT);
+        else 
+            frame.setSize(Window.WINDOW_WIDTH_SMALL, Window.WINDOW_HEIGHT_SMALL);
+    }
 
 }
+
+
