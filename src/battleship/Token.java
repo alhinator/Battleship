@@ -12,7 +12,7 @@ public class Token {
 
     protected Color color;
     private int value;
-    
+    protected Battleship mainClassInst;
     private boolean unremovable;
    
 
@@ -36,28 +36,10 @@ public class Token {
 
        g.setColor(color);
        
-//        if (shape == 0) {
+       
             g.fillOval(Window.getX(column * xdelta +6), Window.getY(row * ydelta +3),
                     xdelta-12, ydelta -6);
-//        } else if (shape == 1) {
-//            g.fillRect(Window.getX(column * xdelta), Window.getY(row * ydelta),
-//                    xdelta, ydelta);
-//
-//        } else {
-//            int triX[] = new int[3];
-//            triX[0] = Window.getX(column * xdelta);
-//            triX[1] = Window.getX(column * xdelta + (xdelta / 2));
-//            triX[2] = Window.getX(column * xdelta + xdelta);
-//            int triY[] = new int[3];
-//            triY[0] = Window.getY(row * ydelta + ydelta);
-//            triY[1] = Window.getY((row * ydelta));
-//            triY[2] = Window.getY(row * ydelta + ydelta);
-//            g.fillPolygon(triX, triY, 3);
-//
-//        }
-//        g.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
-//        g.setColor(Color.black);
-//        g.drawString("" + value, Window.getX(column * xdelta) + (xdelta / 2 - (xdelta / 13)), Window.getY(row * ydelta) + (ydelta / 2 + (ydelta / 15)));
+       
 
     }
 
