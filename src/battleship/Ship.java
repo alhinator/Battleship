@@ -12,14 +12,12 @@ public class Ship extends Token {
 
     public static final int MAX_SHIPS = 5;
 
-<<<<<<< HEAD
+
     public static Image Submarine = Toolkit.getDefaultToolkit().getImage("./assets/Submarine.jpg");
-=======
+
     public static int p1ShipsPlaced = 0;
     public static int p2ShipsPlaced = 0;
-    
-    public static Image Submarine = Toolkit.getDefaultToolkit().getImage("./assets/Submarine.png");
->>>>>>> 32e6f483ff590b880236abeecb44df78cf81cf33
+
     public static Image Cruiser = Toolkit.getDefaultToolkit().getImage("./assets/Cruiser.png");
     public static Image Scout = Toolkit.getDefaultToolkit().getImage("./assets/Scout.png");
     public static Image Destroyer = Toolkit.getDefaultToolkit().getImage("./assets/Destroyer.png");
