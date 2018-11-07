@@ -53,7 +53,7 @@ public class Token {
     }
     
     public void isahit(){
-        color = Color.black;
+        color = Color.red;
     }
     
 

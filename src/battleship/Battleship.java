@@ -13,9 +13,11 @@ public class Battleship extends JFrame implements Runnable {
     boolean animateFirstTime = true;
     Image image;
     Graphics2D g;
-
+//hi
     boolean freeze = false;
 
+    public static boolean startScreen = true;
+    
     boolean switchScreen = false;
     public static boolean alreadyPlaced = false;
     int win = 0;
@@ -27,7 +29,12 @@ public class Battleship extends JFrame implements Runnable {
 
     public static void main(String[] args) {
         frame = new Battleship();
-        frame.setSize(Window.WINDOW_WIDTH, Window.WINDOW_HEIGHT);
+        if (startScreen){
+            frame.setSize(Window.WINDOW_WIDTH_SMALL, Window.WINDOW_HEIGHT_SMALL);
+        }
+        else
+            frame.setSize(Window.WINDOW_WIDTH, Window.WINDOW_HEIGHT);
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
@@ -95,6 +102,7 @@ public class Battleship extends JFrame implements Runnable {
                 }
 
                 if (e.VK_UP == e.getKeyCode()) {
+                    startScreen = !startScreen;
                 } else if (e.VK_DOWN == e.getKeyCode()) {
 
                 } else if (e.VK_LEFT == e.getKeyCode()) {

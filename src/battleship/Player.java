@@ -20,7 +20,7 @@ public class Player {
         if (players[0] == null) {
             players[0] = new Player(Color.blue);
             players[0].playerNum = "1";
-            players[1] = new Player(Color.red);
+            players[1] = new Player(Color.green);
             players[1].playerNum = "2";
         }
         currPlayer = players[0];
