@@ -24,12 +24,14 @@ public class Battleship extends JFrame implements Runnable {
 
     public static Image Screen1 = Toolkit.getDefaultToolkit().getImage("./assets/Screen1.jpg");
     public static Image Screen2 = Toolkit.getDefaultToolkit().getImage("./assets/Screen2.jpg");
+    public static Image Loadingscreen = Toolkit.getDefaultToolkit().getImage("./assets/LoadinScreen1.jpg");
 
     static Battleship frame;
 
     public static void main(String[] args) {
         frame = new Battleship();
         if (startScreen){
+       
             frame.setSize(Window.WINDOW_WIDTH_SMALL, Window.WINDOW_HEIGHT_SMALL);
         }
         else
