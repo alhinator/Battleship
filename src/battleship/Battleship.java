@@ -17,25 +17,33 @@ public class Battleship extends JFrame implements Runnable {
     boolean freeze = false;
 
     public static boolean startScreen = true;
-    
+
     boolean switchScreen = false;
     public static boolean alreadyPlaced = false;
     int win = 0;
 
     public static Image Screen1 = Toolkit.getDefaultToolkit().getImage("./assets/Screen1.jpg");
     public static Image Screen2 = Toolkit.getDefaultToolkit().getImage("./assets/Screen2.jpg");
-    public static Image Loadingscreen = Toolkit.getDefaultToolkit().getImage("./assets/LoadinScreen1.jpg");
+    public static Image Loadingscreen = Toolkit.getDefaultToolkit().getImage("./assets/LoadingScreen1.jpg");
 
     static Battleship frame;
 
     public static void main(String[] args) {
         frame = new Battleship();
+<<<<<<< HEAD
         if (startScreen){
        
 
             frame.setSize(Window.WINDOW_WIDTH_SMALL, Window.WINDOW_HEIGHT_SMALL);
         
         
+=======
+
+        if (startScreen) {
+
+            frame.setSize(Window.WINDOW_WIDTH_SMALL, Window.WINDOW_HEIGHT_SMALL);
+        }
+>>>>>>> 3ba3c9bd8374b0dc2f73852649fe97489c3786d4
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
@@ -48,12 +56,18 @@ public class Battleship extends JFrame implements Runnable {
                 if (!freeze && !switchScreen) {
                     if (e.BUTTON1 == e.getButton()) {
 
-                        e.getX();
-                        e.getY();
-                        if (Board.AddTokenPixel(e.getX() - Window.getX(0),
-                                e.getY() - Window.getY(0), alreadyPlaced)) {
-                            alreadyPlaced = true;
+                        int xpos = e.getX();
+                        int ypos = e.getY();
+                        if (startScreen) {
+                            switchSize();
                         }
+                        else if (!switchScreen && !startScreen) {
+                            if (Board.AddTokenPixel(e.getX() - Window.getX(0),
+                                    e.getY() - Window.getY(0), alreadyPlaced)) {
+                                alreadyPlaced = true;
+                            }
+                        }
+                        
 
                     }
                 }
@@ -69,9 +83,13 @@ public class Battleship extends JFrame implements Runnable {
                         if (switchScreen) {
                             switchScreen = false;
                         } else {
-                            
-                            if (Board.confirm()){switchScreen = true; Player.switchTurn(); alreadyPlaced = false;}
-                            
+
+                            if (Board.confirm()) {
+                                switchScreen = true;
+                                Player.switchTurn();
+                                alreadyPlaced = false;
+                            }
+
                         }
 
                     }
@@ -104,7 +122,7 @@ public class Battleship extends JFrame implements Runnable {
                 }
 
                 if (e.VK_UP == e.getKeyCode()) {
-                    
+                    switchSize();
                 } else if (e.VK_DOWN == e.getKeyCode()) {
 
                 } else if (e.VK_LEFT == e.getKeyCode()) {
@@ -174,6 +192,7 @@ public class Battleship extends JFrame implements Runnable {
         g.fillRect(Window.getWidth2() + Window.getXBorder() - 100, 0, 100, 70);
         g.setColor(Color.black);
         g.drawString("CONFIRM", Window.getWidth2() + Window.getXBorder() - 99, 60);
+<<<<<<< HEAD
         
 
 
@@ -190,6 +209,14 @@ public class Battleship extends JFrame implements Runnable {
 //            g.setFont(new Font("Arial", Font.PLAIN, 45));
 //            g.drawString(" P2 WIN", Window.getWidth2() / 2 - 100, Window.getHeight2() / 2);
 //        }
+=======
+
+        if (startScreen) {
+            g.drawImage(Loadingscreen, 0, Window.getYBorder(), Window.WINDOW_WIDTH_SMALL, Window.WINDOW_HEIGHT_SMALL - Window.getYBorder(), this);
+
+        }
+
+>>>>>>> 3ba3c9bd8374b0dc2f73852649fe97489c3786d4
         if (switchScreen) {
             g.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
             g.setColor(Color.black);
@@ -244,10 +271,8 @@ public class Battleship extends JFrame implements Runnable {
             reset();
         }
 
-        
         //System.out.println("here i am in gitHub");
         // hello world;
-        
     }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -265,17 +290,15 @@ public class Battleship extends JFrame implements Runnable {
         }
         relaxer = null;
     }
-    
-    
-    public void switchSize(){
+
+    public void switchSize() {
         startScreen = !startScreen;
-        
-        if (!startScreen)
+
+        if (!startScreen) {
             frame.setSize(Window.WINDOW_WIDTH, Window.WINDOW_HEIGHT);
-        else 
+        } else {
             frame.setSize(Window.WINDOW_WIDTH_SMALL, Window.WINDOW_HEIGHT_SMALL);
+        }
     }
 
 }
-
-
