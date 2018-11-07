@@ -30,15 +30,12 @@ public class Battleship extends JFrame implements Runnable {
 
     public static void main(String[] args) {
         frame = new Battleship();
-<<<<<<< HEAD
         if (startScreen){
        
-=======
-        
->>>>>>> cc23c4066621423817055e2baadb731a627ba4af
+
             frame.setSize(Window.WINDOW_WIDTH_SMALL, Window.WINDOW_HEIGHT_SMALL);
         
-            
+        
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
@@ -178,13 +175,7 @@ public class Battleship extends JFrame implements Runnable {
         g.setColor(Color.black);
         g.drawString("CONFIRM", Window.getWidth2() + Window.getXBorder() - 99, 60);
         
-         g.setColor(Color.gray);
-        g.fillRect(Window.getWidth2()/2 - 200, Window.getHeight2()/2, 50, 25);
-        
-         g.setColor(Color.gray);
-        g.fillRect(Window.getWidth2()/2 + 100, Window.getHeight2()/2, 50, 20);
-//        g.setColor(Color.black);
-//        g.drawString("CONFIRM", Window.getWidth2() + Window.getXBorder() - 99, 60);
+
 
 //        if (win == 1) {
 //            g.setColor(Color.gray);
