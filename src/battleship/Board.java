@@ -395,6 +395,29 @@ public class Board {
 
     //CheckWin now checks the whole board.
     public static boolean CheckWin() {
+        boolean DestroyerSunk = false;
+        boolean CarrierSunk = false;
+        boolean SubSunk = false;
+        boolean CruiserSunk = false;
+        boolean ScoutSunk = false;
+        
+        for (int zi = 0; zi < NUM_ROWS; zi++) {
+            for (int zx = 0; zx < NUM_COLUMNS; zx++) {
+                if (p1Ships[zi][zx] != null) {
+                    if(p1Ships[zi][zx].getType() == Ship.shipClass.DESTROYER && p1Ships[zi][zx].isSunk())
+                        DestroyerSunk = true;
+                    if(p1Ships[zi][zx].getType() == Ship.shipClass.CARRIER && p1Ships[zi][zx].isSunk())
+                        CarrierSunk = true;
+                    if(p1Ships[zi][zx].getType() == Ship.shipClass.SUB && p1Ships[zi][zx].isSunk())
+                        SubSunk = true;
+                    if(p1Ships[zi][zx].getType() == Ship.shipClass.CRUISER && p1Ships[zi][zx].isSunk())
+                        CruiserSunk = true;
+                    if(p1Ships[zi][zx].getType() == Ship.shipClass.SCOUT && p1Ships[zi][zx].isSunk())
+                        ScoutSunk = true;
+                }
+            }
+        }
+        
         return false;
     }
 
