@@ -88,5 +88,7 @@ public class Ship extends Token {
     public boolean isSunk() {
         return sunk;
     }
-
+    public void ShipSank(){
+        sunk = true;
+    }
 }
