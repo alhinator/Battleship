@@ -50,6 +50,7 @@ public class Battleship extends JFrame implements Runnable {
                         int xpos = e.getX();
                         int ypos = e.getY();
                         if (startScreen) {
+                            
                             switchSize();
                         }
                         else if (!switchScreen && !startScreen) {
