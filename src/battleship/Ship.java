@@ -23,6 +23,8 @@ public class Ship extends Token {
     public static Image Destroyer = Toolkit.getDefaultToolkit().getImage("./assets/Destroyer.png");
     public static Image Carrier = Toolkit.getDefaultToolkit().getImage("./assets/Carrier.png");
     
+    
+    
     public static enum shipClass {
         SCOUT, CRUISER, SUB, CARRIER, DESTROYER
     };

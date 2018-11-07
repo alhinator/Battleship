@@ -164,6 +164,14 @@ public class Battleship extends JFrame implements Runnable {
         g.fillRect(Window.getWidth2() + Window.getXBorder() - 100, 0, 100, 70);
         g.setColor(Color.black);
         g.drawString("CONFIRM", Window.getWidth2() + Window.getXBorder() - 99, 60);
+        
+         g.setColor(Color.gray);
+        g.fillRect(Window.getWidth2()/2 - 200, Window.getHeight2()/2, 200, 75);
+        
+         g.setColor(Color.gray);
+        g.fillRect(Window.getWidth2()/2 + 100, Window.getHeight2()/2, 200, 75);
+//        g.setColor(Color.black);
+//        g.drawString("CONFIRM", Window.getWidth2() + Window.getXBorder() - 99, 60);
 
 //        if (win == 1) {
 //            g.setColor(Color.gray);
