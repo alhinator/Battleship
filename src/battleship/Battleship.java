@@ -30,10 +30,13 @@ public class Battleship extends JFrame implements Runnable {
 
     public static void main(String[] args) {
         frame = new Battleship();
+<<<<<<< HEAD
+=======
 
             frame.setSize(Window.WINDOW_WIDTH_SMALL, Window.WINDOW_HEIGHT_SMALL);
         
             
+>>>>>>> 22412701f2691d9f6768bc0a5e9cee4c76fd0c89
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
@@ -185,6 +188,10 @@ public class Battleship extends JFrame implements Runnable {
         g.fillRect(Window.getWidth2() + Window.getXBorder() - 100, 0, 100, 70);
         g.setColor(Color.black);
         g.drawString("CONFIRM", Window.getWidth2() + Window.getXBorder() - 99, 60);
+<<<<<<< HEAD
+
+=======
+>>>>>>> 22412701f2691d9f6768bc0a5e9cee4c76fd0c89
         
          g.setColor(Color.gray);
         g.fillRect(Window.getWidth2()/2 - 200, Window.getHeight2()/2, 50, 25);
@@ -207,6 +214,17 @@ public class Battleship extends JFrame implements Runnable {
 //            g.setFont(new Font("Arial", Font.PLAIN, 45));
 //            g.drawString(" P2 WIN", Window.getWidth2() / 2 - 100, Window.getHeight2() / 2);
 //        }
+<<<<<<< HEAD
+
+
+        if (startScreen) {
+            g.drawImage(Loadingscreen, 0, Window.getYBorder(), Window.WINDOW_WIDTH_SMALL, Window.WINDOW_HEIGHT_SMALL - Window.getYBorder(), this);
+             g.drawString("test", Window.WINDOW_WIDTH_SMALL/2  - 230, Window.WINDOW_HEIGHT_SMALL / 2 + 90 );
+        }
+
+
+=======
+>>>>>>> 22412701f2691d9f6768bc0a5e9cee4c76fd0c89
         if (switchScreen) {
             g.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
             g.setColor(Color.black);
