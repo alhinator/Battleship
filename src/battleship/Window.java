@@ -51,5 +51,7 @@ public class Window {
     public static int getYBorder(){
         return YBORDER;
     }
+    
+    
 
 }
