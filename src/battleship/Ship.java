@@ -67,7 +67,7 @@ public class Ship extends Token {
         }
         
         if (hit){
-            g.setColor(Color.black);
+            g.setColor(Color.red);
         g.fillRect(Window.getX(column * xdelta +6), Window.getY(row * ydelta +3)+ Window.getHeight2()/2,
                     xdelta-12, ydelta -6);
         }
