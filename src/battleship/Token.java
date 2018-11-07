@@ -14,6 +14,7 @@ public class Token {
     private int value;
     protected Battleship mainClassInst;
     private boolean unremovable;
+    public boolean hit;
    
 
     Token(Color _color) {
@@ -48,6 +49,10 @@ public class Token {
     }
     public void setUnremovable(){
         unremovable = true;
+        color = Color.white;
+    }
+    
+    public void isahit(){
         color = Color.black;
     }
     

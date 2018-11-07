@@ -27,6 +27,7 @@ public class Ship extends Token {
 
     private shipClass shipType;
     private boolean sunk;
+    public boolean hit;
     private int health;
 
     Ship(Color _color, shipClass type) {
@@ -63,6 +64,12 @@ public class Ship extends Token {
             g.drawImage(Carrier, Window.getX(column*xdelta), Window.getY(row*ydelta + Window.getHeight2()/2), xdelta*4, ydelta, super.mainClassInst);
         } else if (shipType == shipClass.DESTROYER) {
             g.drawImage(Destroyer, Window.getX(column*xdelta), Window.getY(row*ydelta + Window.getHeight2()/2), xdelta*5, ydelta, super.mainClassInst);
+        }
+        
+        if (hit){
+            g.setColor(Color.black);
+        g.fillRect(Window.getX(column * xdelta +6), Window.getY(row * ydelta +3)+ Window.getHeight2()/2,
+                    xdelta-12, ydelta -6);
         }
     } 
     
