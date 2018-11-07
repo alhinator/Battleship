@@ -30,12 +30,7 @@ public class Battleship extends JFrame implements Runnable {
 
     public static void main(String[] args) {
         frame = new Battleship();
-<<<<<<< HEAD
-        if (startScreen){
-       
-=======
-        
->>>>>>> cc23c4066621423817055e2baadb731a627ba4af
+
             frame.setSize(Window.WINDOW_WIDTH_SMALL, Window.WINDOW_HEIGHT_SMALL);
         
             
