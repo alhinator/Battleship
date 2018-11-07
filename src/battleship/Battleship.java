@@ -46,7 +46,7 @@ public class Battleship extends JFrame implements Runnable {
                 if (!freeze && !switchScreen) {
                     if (e.BUTTON1 == e.getButton()) {
 
-<<<<<<< HEAD
+
                         int xpos = e.getX();
                         int ypos = e.getY();
                         if (startScreen) {
@@ -58,13 +58,12 @@ public class Battleship extends JFrame implements Runnable {
                                     e.getY() - Window.getY(0), alreadyPlaced)) {
                                 alreadyPlaced = true;
                             }
-=======
                         e.getX();
                         e.getY();
                         if (Board.AddTokenPixel(e.getX() - Window.getX(0),
                                 e.getY() - Window.getY(0), alreadyPlaced)) {
                             alreadyPlaced = true;
->>>>>>> 44a7dfaafe9ea08b7353630c3f236f67e9edcebd
+                        }
                         }
 
                     }
