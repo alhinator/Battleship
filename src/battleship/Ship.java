@@ -54,6 +54,7 @@ public class Ship extends Token {
         g.setColor(color);
         g.fillRect(Window.getX(column * xdelta + 6), Window.getY(row * ydelta + 3) + Window.getHeight2() / 2,
                 xdelta - 12, ydelta - 6);
+        
     }
 
     public void drawShip(Graphics2D g, int row, int column, int xdelta, int ydelta) {
@@ -73,6 +74,7 @@ public class Ship extends Token {
         } else if (shipType == shipClass.MISS) {
             g.drawImage(missGif, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta, ydelta, super.mainClassInst);
         }
+        
         if (hit) {
             g.drawImage(hitGif, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta, ydelta, super.mainClassInst);
 
@@ -93,5 +95,6 @@ public class Ship extends Token {
 
     public void shipSank() {
         sunk = true;
+        hit = true;
     }
 }
