@@ -29,7 +29,7 @@ public class Battleship extends JFrame implements Runnable {
     //if win is 0, nobody has won.
     //if win is 1, player 1 won.
     //if win is 2, player 2 won.
-    int win = 1;
+    int win = 0;
 
     //these screens are the two switchScreens.
     public static Image Screen3 = Toolkit.getDefaultToolkit().getImage("./assets/Screen3.jpg");
