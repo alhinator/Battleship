@@ -13,33 +13,40 @@ public class Battleship extends JFrame implements Runnable {
     boolean animateFirstTime = true;
     Image image;
     Graphics2D g;
-//hi
+
+    // freeze is for when we dont want anythign to happen.
     boolean freeze = false;
 
+    //startScreen, switchScreen, and rulesScreen are for if we wnat to display those screens or not.
     public static boolean startScreen = true;
-
-    public static boolean rulesScreen  = false;
-    
+    public static boolean rulesScreen = false;
     boolean switchScreen = false;
+
+    //alreadyPlaced determines whether a player has placed a token or not on their turn.
+    //this is in main class so that mouseEvent handlers can access it w/o using class handles
     public static boolean alreadyPlaced = false;
+
+    //if win is 0, nobody has won.
+    //if win is 1, player 1 won.
+    //if win is 2, player 2 won.
     int win = 0;
 
-    public static Image Screen1 = Toolkit.getDefaultToolkit().getImage("./assets/Screen1.jpg");
-    public static Image Screen2 = Toolkit.getDefaultToolkit().getImage("./assets/Screen2.jpg");
+    //these screens are the two switchScreens.
     public static Image Screen3 = Toolkit.getDefaultToolkit().getImage("./assets/Screen3.jpg");
     public static Image Screen4 = Toolkit.getDefaultToolkit().getImage("./assets/Screen4.jpeg");
 
+    //contrary to its name, this is the startScreen.
     public static Image Loadingscreen = Toolkit.getDefaultToolkit().getImage("./assets/LoadingScreen1.jpg");
 
+    //this is the frame. it is outside of main so that it can be accessed in other methods.
     static Battleship frame;
 
     public static void main(String[] args) {
+        //frame settings. DO NOT CHANGE
         frame = new Battleship();
-
-        
         frame.setSize(Window.WINDOW_WIDTH_SMALL, Window.WINDOW_HEIGHT_SMALL);
-
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
@@ -47,26 +54,17 @@ public class Battleship extends JFrame implements Runnable {
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
 
-                if (!freeze && !switchScreen) {
-                    if (e.BUTTON1 == e.getButton()) {
+                if (!freeze && !switchScreen) { //prevents things from happening
+                    if (e.BUTTON1 == e.getButton()) { //left click
 
-                        int xpos = e.getX();
+                        int xpos = e.getX(); //finding x and y pos of mouse pointer
                         int ypos = e.getY();
-                        if (startScreen) {
 
-                            g.setColor(Color.gray);
-                            g.fillRect(13, Window.WINDOW_HEIGHT_SMALL - 60, 240, 45);
-
+                        if (startScreen) { //clicking "start" box will make the screen big.
                             if (xpos > 13 && xpos < 13 + 240 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
                                 switchSize();
                             }
-                        } else if (!switchScreen && !startScreen) {
-                            if (Board.AddTokenPixel(e.getX() - Window.getX(0),
-                                    e.getY() - Window.getY(0), alreadyPlaced)) {
-                                alreadyPlaced = true;
-                            }
-                            e.getX();
-                            e.getY();
+                        } else if (!switchScreen && !startScreen) { //add token when placing board is active                                                     
                             if (Board.AddTokenPixel(e.getX() - Window.getX(0),
                                     e.getY() - Window.getY(0), alreadyPlaced)) {
                                 alreadyPlaced = true;
@@ -75,16 +73,15 @@ public class Battleship extends JFrame implements Runnable {
 
                     }
                 }
-                if (e.BUTTON3 == e.getButton()) {
+                if (e.BUTTON3 == e.getButton()) { // right click
 
-                    int x = e.getX();
+                    int x = e.getX(); // finding x and y pos of mouse pointer
                     int y = e.getY();
-                    if (x > Window.getWidth2() + Window.getXBorder() - 100 && x < Window.getWidth2() + Window.getXBorder() && y > 0 && y < 70) {
+                    if (x > Window.getWidth2() + Window.getXBorder() - 100 && x < Window.getWidth2() + Window.getXBorder() && y > 0 && y < 70) { //"confirm" bounding box
                         if (switchScreen) {
-                            switchScreen = false;
+                            switchScreen = false; //leaving switchScreen
                         } else {
-
-                            if (Board.confirm()) {
+                            if (Board.confirm()) { //if the player HAS placed a token, turn switchScreen ON. otherwise, do nothing
                                 switchScreen = true;
                                 Player.switchTurn();
                                 alreadyPlaced = false;
@@ -123,16 +120,15 @@ public class Battleship extends JFrame implements Runnable {
                 }
 
                 if (e.VK_UP == e.getKeyCode()) {
-                    switchSize();
-
+                    switchSize(); // FOR TESTING
                 } else if (e.VK_DOWN == e.getKeyCode()) {
-                    switchScreen = !switchScreen;
+                    switchScreen = !switchScreen; //FOR TESTING
                 } else if (e.VK_LEFT == e.getKeyCode()) {
 
                 } else if (e.VK_RIGHT == e.getKeyCode()) {
 
                 } else if (e.VK_ESCAPE == e.getKeyCode()) {
-                    //reset();
+                    //reset(); //WARNING! CAUSES NULLPOINTER
                 }
                 repaint();
             }
@@ -180,42 +176,45 @@ public class Battleship extends JFrame implements Runnable {
             return;
         }
 
-        Board.Draw(g);
+        Board.Draw(g); //drawing grid and tokens.
+
+        //drawing scores
         g.setColor(Player.getPlayers()[0].getColor());
         g.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
         g.drawString("P1 score: " + Player.getPlayers()[0].getPoints(), 50, 60);
         g.setColor(Player.getPlayers()[1].getColor());
         g.drawString("P2 score: " + Player.getPlayers()[1].getPoints(), 175, 60);
 
+        //drawing who's turn it is
         g.setColor(Player.getCurrentPlayer().getColor());
         g.drawString("Current player = " + Player.getCurrentPlayer().toString(), 320, 60);
 
+        //drawing "confirm" bounding box
         g.setColor(Color.gray);
         g.fillRect(Window.getWidth2() + Window.getXBorder() - 100, 0, 100, 70);
         g.setColor(Color.black);
         g.drawString("CONFIRM", Window.getWidth2() + Window.getXBorder() - 99, 60);
 
-        if (startScreen) {
-            g.drawImage(Loadingscreen, 0, Window.getYBorder(), Window.WINDOW_WIDTH_SMALL, Window.WINDOW_HEIGHT_SMALL - Window.getYBorder(), this);
-
-        }
-
+        //drawing switchScreens
         if (switchScreen) {
             g.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
             g.setColor(Color.black);
-            //g.fillRect(Window.getX(0), Window.getY(0), Window.getWidth2()+1, Window.getHeight2()+1);
+            g.fillRect(Window.getX(0), Window.getY(0), Window.getWidth2() + 1, Window.getHeight2() + 1);
             if (Player.getCurrentPlayer() == Player.getPlayers()[0]) {
                 g.drawImage(Screen4, Window.getX(0), Window.getY(0), Window.getWidth2() + 1, Window.getHeight2() + 1, this);
                 g.setColor(Color.black);
                 g.drawString("look away, switch players", Window.getWidth2() / 2 - 200, Window.getHeight2() / 2 - 100);
             } else {
                 g.drawImage(Screen3, Window.getX(0), Window.getY(0), Window.getWidth2() + 1, Window.getHeight2() + 1, this);
-
                 g.setColor(Color.black);
                 g.drawString("look away,", 50, Window.getHeight2() / 2 - 100);
                 g.drawString("switch players", 425, Window.getHeight2() / 2 - 100);
 
             }
+        }
+        //drawing startScreen
+        if (startScreen) {
+            g.drawImage(Loadingscreen, 0, Window.getYBorder(), Window.WINDOW_WIDTH_SMALL, Window.WINDOW_HEIGHT_SMALL - Window.getYBorder(), this);
         }
         gOld.drawImage(image, 0, 0, null);
     }
@@ -256,9 +255,9 @@ public class Battleship extends JFrame implements Runnable {
             reset();
         }
 
+        //Checking for wins
         win = Board.checkWin();
-        
-        
+
     }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -277,12 +276,14 @@ public class Battleship extends JFrame implements Runnable {
         relaxer = null;
     }
 
-    public void switchSize() {
+    public void switchSize() { //Changes the size from big to small and inverts startScreen
         startScreen = !startScreen;
 
         if (!startScreen) {
             frame.setSize(Window.WINDOW_WIDTH, Window.WINDOW_HEIGHT);
-            frame.setLocation(0, 0);
+            Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+            frame.setLocation(dim.width / 2 - this.getSize().width / 2,0);
+            
         } else {
             frame.setSize(Window.WINDOW_WIDTH_SMALL, Window.WINDOW_HEIGHT_SMALL);
             frame.setLocationRelativeTo(null);

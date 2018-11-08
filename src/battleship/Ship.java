@@ -91,7 +91,7 @@ public class Ship extends Token {
         return sunk;
     }
 
-    public void ShipSank() {
+    public void shipSank() {
         sunk = true;
     }
 }
