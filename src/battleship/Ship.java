@@ -12,21 +12,20 @@ public class Ship extends Token {
 
     public static final int MAX_SHIPS = 5;
 
-
-    public static Image Submarine = Toolkit.getDefaultToolkit().getImage("./assets/Submarine.jpg");
-
     public static int p1ShipsPlaced = 0;
     public static int p2ShipsPlaced = 0;
 
     public static Image Cruiser = Toolkit.getDefaultToolkit().getImage("./assets/Cruiser.png");
     public static Image Scout = Toolkit.getDefaultToolkit().getImage("./assets/Scout.png");
+    public static Image Submarine = Toolkit.getDefaultToolkit().getImage("./assets/Submarine.png");
     public static Image Destroyer = Toolkit.getDefaultToolkit().getImage("./assets/Destroyer.png");
     public static Image Carrier = Toolkit.getDefaultToolkit().getImage("./assets/Carrier.png");
-    
-    
-    
+
+    public static Image hitGif = Toolkit.getDefaultToolkit().getImage("./assets/hit.gif");
+    public static Image missGif = Toolkit.getDefaultToolkit().getImage("./assets/miss.gif");
+
     public static enum shipClass {
-        SCOUT, CRUISER, SUB, CARRIER, DESTROYER
+        SCOUT, CRUISER, SUB, CARRIER, DESTROYER, MISS, HIT
     };
 
     private shipClass shipType;
@@ -49,34 +48,37 @@ public class Ship extends Token {
             health = 5;
         }
     }
+
     public void draw(Graphics2D g, int row, int column, int xdelta, int ydelta) {
 
         g.setColor(color);
-        g.fillRect(Window.getX(column * xdelta +6), Window.getY(row * ydelta +3)+ Window.getHeight2()/2,
-                    xdelta-12, ydelta -6);
+        g.fillRect(Window.getX(column * xdelta + 6), Window.getY(row * ydelta + 3) + Window.getHeight2() / 2,
+                xdelta - 12, ydelta - 6);
     }
+
     public void drawShip(Graphics2D g, int row, int column, int xdelta, int ydelta) {
 
-        
         if (shipType == shipClass.SCOUT) {
-            g.drawImage(Scout, Window.getX(column*xdelta), Window.getY(row*ydelta + Window.getHeight2()/2), xdelta*2, ydelta, super.mainClassInst);
+            g.drawImage(Scout, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta * 2, ydelta, super.mainClassInst);
         } else if (shipType == shipClass.CRUISER) {
-            g.drawImage(Cruiser, Window.getX(column*xdelta), Window.getY(row*ydelta + Window.getHeight2()/2), xdelta*3, ydelta, super.mainClassInst);
+            g.drawImage(Cruiser, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta * 3, ydelta, super.mainClassInst);
         } else if (shipType == shipClass.SUB) {
-            g.drawImage(Submarine, Window.getX(column*xdelta), Window.getY(row*ydelta + Window.getHeight2()/2), xdelta*3, ydelta, super.mainClassInst);
+            g.drawImage(Submarine, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta * 3, ydelta, super.mainClassInst);
         } else if (shipType == shipClass.CARRIER) {
-            g.drawImage(Carrier, Window.getX(column*xdelta), Window.getY(row*ydelta + Window.getHeight2()/2), xdelta*4, ydelta, super.mainClassInst);
+            g.drawImage(Carrier, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta * 4, ydelta, super.mainClassInst);
         } else if (shipType == shipClass.DESTROYER) {
-            g.drawImage(Destroyer, Window.getX(column*xdelta), Window.getY(row*ydelta + Window.getHeight2()/2), xdelta*5, ydelta, super.mainClassInst);
+            g.drawImage(Destroyer, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta * 5, ydelta, super.mainClassInst);
+        } else if (shipType == shipClass.HIT) {
+            g.drawImage(hitGif, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta, ydelta, super.mainClassInst);
+        } else if (shipType == shipClass.MISS) {
+            g.drawImage(missGif, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta, ydelta, super.mainClassInst);
         }
-        
-        if (hit){
-            g.setColor(Color.red);
-        g.fillRect(Window.getX(column * xdelta +6), Window.getY(row * ydelta +3)+ Window.getHeight2()/2,
-                    xdelta-12, ydelta -6);
+        if (hit) {
+            g.drawImage(hitGif, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta, ydelta, super.mainClassInst);
+
         }
-    } 
-    
+    }
+
     public shipClass getType() {
         return shipType;
     }
@@ -88,7 +90,8 @@ public class Ship extends Token {
     public boolean isSunk() {
         return sunk;
     }
-    public void ShipSank(){
+
+    public void shipSank() {
         sunk = true;
     }
 }
