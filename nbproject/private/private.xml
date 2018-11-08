@@ -4,11 +4,20 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <file>file://mvhs-class1/Students/2020/145004050/My%20Documents/GitHub/Battleship/src/battleship/Board.java</file>
             <file>file://mvhs-class1/Students/2020/145004050/My%20Documents/GitHub/Battleship/src/battleship/Ship.java</file>
             <file>file://mvhs-class1/Students/2020/145004050/My%20Documents/GitHub/Battleship/src/battleship/Token.java</file>
             <file>file://mvhs-class1/Students/2020/145004050/My%20Documents/GitHub/Battleship/src/battleship/Player.java</file>
             <file>file://mvhs-class1/Students/2020/145004050/My%20Documents/GitHub/Battleship/src/battleship/Window.java</file>
+=======
+            <file>file://mvhs-class1/Students/2020/143000959/My%20Documents/GitHub/Battleship/src/battleship/Window.java</file>
+            <file>file://mvhs-class1/Students/2020/143000959/My%20Documents/GitHub/Battleship/src/battleship/Battleship.java</file>
+            <file>file://mvhs-class1/Students/2020/143000959/My%20Documents/GitHub/Battleship/src/battleship/Token.java</file>
+            <file>file://mvhs-class1/Students/2020/143000959/My%20Documents/GitHub/Battleship/src/battleship/Board.java</file>
+            <file>file://mvhs-class1/Students/2020/143000959/My%20Documents/GitHub/Battleship/src/battleship/Player.java</file>
+            <file>file://mvhs-class1/Students/2020/143000959/My%20Documents/GitHub/Battleship/src/battleship/Ship.java</file>
+>>>>>>> 71e3b46ac6d4983d3ff2458d6e2f329c1832cdd1
 =======
             <file>file://mvhs-class1/Students/2020/145003959/My%20Documents/GitHub/Battleship/src/battleship/Token.java</file>
             <file>file://mvhs-class1/Students/2020/145003959/My%20Documents/GitHub/Battleship/src/battleship/Player.java</file>
