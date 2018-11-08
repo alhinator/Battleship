@@ -29,7 +29,7 @@ public class Battleship extends JFrame implements Runnable {
     //if win is 0, nobody has won.
     //if win is 1, player 1 won.
     //if win is 2, player 2 won.
-    int win = 0;
+    int win = 1;
 
     //these screens are the two switchScreens.
     public static Image Screen3 = Toolkit.getDefaultToolkit().getImage("./assets/Screen3.jpg");
@@ -211,6 +211,16 @@ public class Battleship extends JFrame implements Runnable {
                 g.drawString("switch players", 425, Window.getHeight2() / 2 - 100);
 
             }
+        }
+        if(win == 1) {
+            g.setColor(Color.black);
+            g.setFont(new Font("Comic Sans MS",Font.PLAIN,45));
+            g.drawString("Player 1 Wins",Window.getWidth2()/2,Window.getHeight2()/2);
+        }
+        else if(win == 2) {
+            g.setColor(Color.black);
+            g.setFont(new Font("Comic Sans MS",Font.PLAIN,45));
+            g.drawString("Player 2 Wins",Window.getWidth2()/2,Window.getHeight2()/2);            
         }
         //drawing startScreen
         if (startScreen) {
