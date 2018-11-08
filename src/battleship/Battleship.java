@@ -36,12 +36,7 @@ public class Battleship extends JFrame implements Runnable {
     public static void main(String[] args) {
         frame = new Battleship();
 
-        if (startScreen) {
-
-            frame.setSize(Window.WINDOW_WIDTH_SMALL, Window.WINDOW_HEIGHT_SMALL);
-            frame.setLocationRelativeTo(null);
-        }
-
+        
         frame.setSize(Window.WINDOW_WIDTH_SMALL, Window.WINDOW_HEIGHT_SMALL);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
