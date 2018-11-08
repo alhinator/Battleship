@@ -92,26 +92,36 @@ public class Board {
                     if (Ship.p1ShipsPlaced == 0) {
                         if (currCol > NUM_COLUMNS - 2) {
                             currCol = NUM_COLUMNS - 2;
+                            if(p1Ships[currRow][currCol] != null)
+                                return false;
                         }
                         p1Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.SCOUT);
                     } else if (Ship.p1ShipsPlaced == 1) {
                         if (currCol > NUM_COLUMNS - 3) {
                             currCol = NUM_COLUMNS - 3;
+                            if(p1Ships[currRow][currCol] != null)
+                                return false;
                         }
                         p1Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.CRUISER);
                     } else if (Ship.p1ShipsPlaced == 2) {
                         if (currCol > NUM_COLUMNS - 3) {
                             currCol = NUM_COLUMNS - 3;
+                            if(p1Ships[currRow][currCol] != null)
+                                return false;
                         }
                         p1Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.SUB);
                     } else if (Ship.p1ShipsPlaced == 3) {
                         if (currCol > NUM_COLUMNS - 4) {
                             currCol = NUM_COLUMNS - 4;
+                            if(p1Ships[currRow][currCol] != null)
+                                return false;
                         }
                         p1Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.CARRIER);
                     } else if (Ship.p1ShipsPlaced == 4) {
                         if (currCol > NUM_COLUMNS - 5) {
                             currCol = NUM_COLUMNS - 5;
+                            if(p1Ships[currRow][currCol] != null)
+                                return false;
                         }
                         p1Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.DESTROYER);
                     }
@@ -127,26 +137,36 @@ public class Board {
                     if (Ship.p1ShipsPlaced == 0) {
                         if (currCol > NUM_COLUMNS - 2) {
                             currCol = NUM_COLUMNS - 2;
+                            if(p1Ships[currRow][currCol] != null)
+                                return false;
                         }
                         p1Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.SCOUT);
                     } else if (Ship.p1ShipsPlaced == 1) {
                         if (currCol > NUM_COLUMNS - 3) {
                             currCol = NUM_COLUMNS - 3;
+                            if(p1Ships[currRow][currCol] != null)
+                                return false;
                         }
                         p1Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.CRUISER);
                     } else if (Ship.p1ShipsPlaced == 2) {
                         if (currCol > NUM_COLUMNS - 3) {
                             currCol = NUM_COLUMNS - 3;
+                            if(p1Ships[currRow][currCol] != null)
+                                return false;
                         }
                         p1Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.SUB);
                     } else if (Ship.p1ShipsPlaced == 3) {
                         if (currCol > NUM_COLUMNS - 4) {
                             currCol = NUM_COLUMNS - 4;
+                            if(p1Ships[currRow][currCol] != null)
+                                return false;
                         }
                         p1Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.CARRIER);
                     } else if (Ship.p1ShipsPlaced == 4) {
                         if (currCol > NUM_COLUMNS - 5) {
                             currCol = NUM_COLUMNS - 5;
+                            if(p1Ships[currRow][currCol] != null)
+                                return false;
                         }
                         p1Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.DESTROYER);
                     }
@@ -161,26 +181,36 @@ public class Board {
                     if (Ship.p2ShipsPlaced == 0) {
                         if (currCol > NUM_COLUMNS - 2) {
                             currCol = NUM_COLUMNS - 2;
+                            if(p2Ships[currRow][currCol] != null)
+                                return false;
                         }
                         p2Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.SCOUT);
                     } else if (Ship.p2ShipsPlaced == 1) {
                         if (currCol > NUM_COLUMNS - 3) {
                             currCol = NUM_COLUMNS - 3;
+                            if(p2Ships[currRow][currCol] != null)
+                                return false;
                         }
                         p2Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.CRUISER);
                     } else if (Ship.p2ShipsPlaced == 2) {
                         if (currCol > NUM_COLUMNS - 3) {
                             currCol = NUM_COLUMNS - 3;
+                            if(p2Ships[currRow][currCol] != null)
+                                return false;
                         }
                         p2Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.SUB);
                     } else if (Ship.p2ShipsPlaced == 3) {
                         if (currCol > NUM_COLUMNS - 4) {
                             currCol = NUM_COLUMNS - 4;
+                            if(p2Ships[currRow][currCol] != null)
+                                return false;
                         }
                         p2Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.CARRIER);
                     } else if (Ship.p2ShipsPlaced == 4) {
                         if (currCol > NUM_COLUMNS - 5) {
                             currCol = NUM_COLUMNS - 5;
+                            if(p2Ships[currRow][currCol] != null)
+                                return false;
                         }
                         p2Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.DESTROYER);
                     }
@@ -196,6 +226,8 @@ public class Board {
                     if (Ship.p2ShipsPlaced == 0) {
                         if (currCol > NUM_COLUMNS - 2 && p2Ships[currRow][NUM_COLUMNS - 2] == null) {
                             currCol = NUM_COLUMNS - 2;
+                            if(p2Ships[currRow][currCol] != null)
+                                return false;
                             p2Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.SCOUT);
                         } else {
                             p2Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.SCOUT);
@@ -203,33 +235,49 @@ public class Board {
                     } else if (Ship.p2ShipsPlaced == 1) {
                         if (currCol > NUM_COLUMNS - 3 && p2Ships[currRow][NUM_COLUMNS - 3] == null) {
                             currCol = NUM_COLUMNS - 3;
+                            if(p2Ships[currRow][currCol] != null)
+                                return false;
                             p2Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.CRUISER);
 
                         } else {
+                            if(p2Ships[currRow][currCol] != null)
+                                return false;
                             p2Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.CRUISER);
                         }
                     } else if (Ship.p2ShipsPlaced == 2) {
                         if (currCol > NUM_COLUMNS - 3 && p2Ships[currRow][NUM_COLUMNS - 3] == null) {
                             currCol = NUM_COLUMNS - 3;
+                            if(p2Ships[currRow][currCol] != null)
+                                return false;
                             p2Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.SUB);
 
                         } else {
+                            if(p2Ships[currRow][currCol] != null)
+                                return false;
                             p2Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.SUB);
                         }
                     } else if (Ship.p2ShipsPlaced == 3) {
                         if (currCol > NUM_COLUMNS - 4 && p2Ships[currRow][NUM_COLUMNS - 4] == null) {
                             currCol = NUM_COLUMNS - 4;
+                            if(p2Ships[currRow][currCol] != null)
+                                return false;
                             p2Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.CARRIER);
 
                         } else {
+                            if(p2Ships[currRow][currCol] != null)
+                                return false;
                             p2Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.CARRIER);
                         }
                     } else if (Ship.p2ShipsPlaced == 4) {
                         if (currCol > NUM_COLUMNS - 5 && p2Ships[currRow][NUM_COLUMNS - 5] == null) {
                             currCol = NUM_COLUMNS - 5;
+                            if(p2Ships[currRow][currCol] != null)
+                                return false;
                             p2Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.DESTROYER);
 
                         } else {
+                            if(p2Ships[currRow][currCol] != null)
+                                return false;
                             p2Ships[currRow][currCol] = new Ship(Player.getCurrentPlayer().getColor(), Ship.shipClass.DESTROYER);
                         }
                     }

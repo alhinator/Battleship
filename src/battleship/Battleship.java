@@ -38,6 +38,8 @@ public class Battleship extends JFrame implements Runnable {
     //contrary to its name, this is the startScreen.
     public static Image Loadingscreen = Toolkit.getDefaultToolkit().getImage("./assets/LoadingScreen1.jpg");
 
+    //going to put rules screen here
+    
     //this is the frame. it is outside of main so that it can be accessed in other methods.
     static Battleship frame;
 
@@ -64,8 +66,13 @@ public class Battleship extends JFrame implements Runnable {
                             if (xpos > 13 && xpos < 13 + 240 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
                                 switchSize();
                             }
+<<<<<<< HEAD
                             else if (xpos > 13 + 240 && xpos < 13 + 480 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
                               //  System.out.println("hi");
+=======
+                            else if (xpos > 13 + 240 && xpos < 13 + 4800 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
+                                rulesScreen = true;
+>>>>>>> 7ebd1dece1051b3d86edd56326cee28f55d8e8c9
                             }
                         } else if (!switchScreen && !startScreen) { //add token when placing board is active                                                     
                             if (Board.AddTokenPixel(e.getX() - Window.getX(0),
@@ -214,6 +221,16 @@ public class Battleship extends JFrame implements Runnable {
                 g.drawString("switch players", 425, Window.getHeight2() / 2 - 100);
 
             }
+        }
+        if(win == 1) {
+            g.setColor(Color.black);
+            g.setFont(new Font("Comic Sans MS",Font.PLAIN,45));
+            g.drawString("Player 1 Wins",Window.getWidth2()/2,Window.getHeight2()/2);
+        }
+        else if(win == 2) {
+            g.setColor(Color.black);
+            g.setFont(new Font("Comic Sans MS",Font.PLAIN,45));
+            g.drawString("Player 2 Wins",Window.getWidth2()/2,Window.getHeight2()/2);            
         }
         //drawing startScreen
         if (startScreen) {
