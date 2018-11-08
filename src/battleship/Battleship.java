@@ -38,6 +38,8 @@ public class Battleship extends JFrame implements Runnable {
     //contrary to its name, this is the startScreen.
     public static Image Loadingscreen = Toolkit.getDefaultToolkit().getImage("./assets/LoadingScreen1.jpg");
 
+    //going to put rules screen here
+    
     //this is the frame. it is outside of main so that it can be accessed in other methods.
     static Battleship frame;
 
@@ -65,7 +67,7 @@ public class Battleship extends JFrame implements Runnable {
                                 switchSize();
                             }
                             else if (xpos > 13 + 240 && xpos < 13 + 4800 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
-                             //   System.out.println("hi");
+                                rulesScreen = true;
                             }
                         } else if (!switchScreen && !startScreen) { //add token when placing board is active                                                     
                             if (Board.AddTokenPixel(e.getX() - Window.getX(0),
