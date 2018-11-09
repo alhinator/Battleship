@@ -308,7 +308,110 @@ public class Battleship extends JFrame implements Runnable {
     
     public void switchSize2(){
         rulesScreen = !rulesScreen;
-    
+        startScreen = !startScreen;
+        
+      
+        
+        
+        
+    if (!rulesScreen) {
+            frame.setSize(Window.WINDOW_WIDTH, Window.WINDOW_HEIGHT);
+            Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+            frame.setLocation(dim.width / 2 - this.getSize().width / 2,0);
+            
+        } else {
+            frame.setSize(Window.WINDOW_WIDTH_SMALL, Window.WINDOW_HEIGHT_SMALL);
+            frame.setLocationRelativeTo(null);
+
+        }
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY
+
+
+
+
+
+
+
+
+  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY
+  //my name is alex and I am the exTrA gaY
+  //my name is alex and I am the exTrA gaY
+  //my name is alex and I am the exTrA gaY
+  //my name is alex and I am the exTrA gaY
+  //my name is alex and I am the exTrA gaY
+  //my name is alex and I am the exTrA gaY
+  //my name is alex and I am the exTrA gaY
+  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY
+  //my name is alex and I am the exTrA gaY
+  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaYv
+  //my name is alex and I am the exTrA gaY
+  //my name is alex and I am the exTrA gaY
+  //my name is alex and I am the exTrA gaY
+
+
+
+
+
+
+
+
+
+
