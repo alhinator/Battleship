@@ -15,6 +15,8 @@ public class Window {
     static final int WINDOW_HEIGHT = YTITLE + WINDOW_BORDER + 1000;
     static final int WINDOW_WIDTH_SMALL = 500;
     static final int WINDOW_HEIGHT_SMALL = 300;
+    static final int WINDOW_WIDTH_MED = 500;
+    static final int WINDOW_HEIGHT_MED = 600;
     static int xsize = -1;
     static int ysize = -1;
 
