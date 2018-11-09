@@ -528,7 +528,7 @@ public class Board {
                 }
             }
             if (DestroyerSunk && CarrierSunk && SubSunk && CruiserSunk && ScoutSunk) {
-                return 1;
+                return 2;
             }
         } else {
             for (int zi = 0; zi < NUM_ROWS; zi++) {
@@ -549,7 +549,7 @@ public class Board {
                 }
             }
             if (DestroyerSunk && CarrierSunk && SubSunk && CruiserSunk && ScoutSunk) {
-                return 2;
+                return 1;
             }
         }
         return 0;

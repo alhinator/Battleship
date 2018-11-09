@@ -65,12 +65,25 @@ public class Battleship extends JFrame implements Runnable {
                         if (startScreen) { //clicking "start" box will make the screen big.
                             if (xpos > 13 && xpos < 13 + 240 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
                                 switchSize();
+
+                            }                    
+
+                            else if (xpos > 13 + 245 && xpos < 13 + 480 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
+                                rulesScreen = true;
+                                System.out.println("hi");
+
                             }
+<<<<<<< HEAD
                             else if (xpos > 13 + 240 && xpos < 13 + 480 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
                                 switchScreen = true;
                             }
                             else if (xpos > 13 + 240 && xpos < 13 + 4800 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
                                 rulesScreen = true;
+=======
+                            else if (xpos > 13 + 240 && xpos < 13 + 4800 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
+                                switchSize2();
+
+>>>>>>> 340af64d77aa2dcac29df27178ed2e5349eda05c
                             }
                         } else if (!switchScreen && !startScreen) { //add token when placing board is active                                                     
                             if (Board.AddTokenPixel(e.getX() - Window.getX(0),
@@ -250,6 +263,7 @@ public class Battleship extends JFrame implements Runnable {
             } catch (InterruptedException e) {
             }
         }
+        
     }
 
 /////////////////////////////////////////////////////////////////////////
@@ -308,5 +322,113 @@ public class Battleship extends JFrame implements Runnable {
 
         }
     }
+    
+    public void switchSize2(){
+        rulesScreen = !rulesScreen;
+        startScreen = !startScreen;
+        
+      
+        
+        
+        
+    if (!rulesScreen) {
+            frame.setSize(Window.WINDOW_WIDTH, Window.WINDOW_HEIGHT);
+            Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+            frame.setLocation(dim.width / 2 - this.getSize().width / 2,0);
+            
+        } else {
+            frame.setSize(Window.WINDOW_WIDTH_SMALL, Window.WINDOW_HEIGHT_SMALL);
+            frame.setLocationRelativeTo(null);
+
+        }
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY
+
+
+
+
+
+
+
+
+  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY
+  //my name is alex and I am the exTrA gaY
+  //my name is alex and I am the exTrA gaY
+  //my name is alex and I am the exTrA gaY
+  //my name is alex and I am the exTrA gaY
+  //my name is alex and I am the exTrA gaY
+  //my name is alex and I am the exTrA gaY
+  //my name is alex and I am the exTrA gaY
+  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY
+  //my name is alex and I am the exTrA gaY
+  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaY  //my name is alex and I am the exTrA gaYv
+  //my name is alex and I am the exTrA gaY
+  //my name is alex and I am the exTrA gaY
+  //my name is alex and I am the exTrA gaY
+
+
+
+
+
+
+
+
+
+
