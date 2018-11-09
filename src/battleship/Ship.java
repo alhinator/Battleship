@@ -46,7 +46,6 @@ public class Ship extends Token {
             scoutBoxes++;
             boxID = scoutBoxes;
             if(scoutBoxes >= 2) {
-                System.out.println("YYETETE");
                 scoutBoxes = 0;
             }
         } else if (shipType == shipClass.CRUISER) {

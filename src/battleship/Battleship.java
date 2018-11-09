@@ -72,26 +72,17 @@ public class Battleship extends JFrame implements Runnable {
                             if (xpos > 13 && xpos < 13 + 240 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
                                 switchSize();
 
-<<<<<<< HEAD
                             }                    
 
                             else if (xpos > 13 + 245 && xpos < 13 + 480 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
                                 rulesScreen = true;
-                                System.out.println("hi");
+                                //System.out.println("hi");
                                 switchSize();
 
                             }
 
-                            else if (xpos > 13 + 240 && xpos < 13 + 480 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
-                                switchScreen = true;
-                            }
                             else if (xpos > 13 + 240 && xpos < 13 + 4800 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
-                                rulesScreen = true;
-                            }
-                            else if (xpos > 13 + 240 && xpos < 13 + 4800 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
-=======
-                            } else if (xpos > 13 + 240 && xpos < 13 + 4800 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
->>>>>>> 41ced68f33bde43b1800cd5633322f0269948c36
+
                                 switchSize2();
 
 
