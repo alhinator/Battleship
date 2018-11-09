@@ -432,23 +432,28 @@ public class Board {
             for (int zi = 0; zi < NUM_ROWS; zi++) {
                 for (int zx = 0; zx < NUM_COLUMNS; zx++) {
                     if (p1Ships[zi][zx] != null) {
-                        if(p1Ships[zi][zx].getType() == Ship.shipClass.SCOUT)
-                            p1Ships[zi][zx+1] = new Ship(p1Ships[zi][zx].getColor(),Ship.shipClass.SCOUT);
-                        if(p1Ships[zi][zx].getType() == Ship.shipClass.CRUISER)
-                            p1Ships[zi][zx+1] = new Ship(p1Ships[zi][zx].getColor(),Ship.shipClass.CRUISER);
-                            p1Ships[zi][zx+2] = new Ship(p1Ships[zi][zx].getColor(),Ship.shipClass.CRUISER);
-                        if(p1Ships[zi][zx].getType() == Ship.shipClass.SUB)
-                            p1Ships[zi][zx+1] = new Ship(p1Ships[zi][zx].getColor(),Ship.shipClass.SUB);
-                            p1Ships[zi][zx+2] = new Ship(p1Ships[zi][zx].getColor(),Ship.shipClass.CRUISER);
-                        if(p1Ships[zi][zx].getType() == Ship.shipClass.CARRIER)
-                            p1Ships[zi][zx+1] = new Ship(p1Ships[zi][zx].getColor(),Ship.shipClass.CARRIER);
-                            p1Ships[zi][zx+2] = new Ship(p1Ships[zi][zx].getColor(),Ship.shipClass.CRUISER);
-                            p1Ships[zi][zx+3] = new Ship(p1Ships[zi][zx].getColor(),Ship.shipClass.CRUISER);
-                        if(p1Ships[zi][zx].getType() == Ship.shipClass.DESTROYER)
-                            p1Ships[zi][zx+1] = new Ship(p1Ships[zi][zx].getColor(),Ship.shipClass.DESTROYER);
-                            p1Ships[zi][zx+2] = new Ship(p1Ships[zi][zx].getColor(),Ship.shipClass.CRUISER);
-                            p1Ships[zi][zx+3] = new Ship(p1Ships[zi][zx].getColor(),Ship.shipClass.CRUISER);
-                            p1Ships[zi][zx+4] = new Ship(p1Ships[zi][zx].getColor(),Ship.shipClass.CRUISER);
+//                        if(p1Ships[zi][zx].getType() == Ship.shipClass.SCOUT) {
+//                            p1Ships[zi][zx+1] = new Ship(p1Ships[zi][zx].getColor(),Ship.shipClass.SCOUT);
+//                        }
+//                        if(p1Ships[zi][zx].getType() == Ship.shipClass.CRUISER) {
+//                            p1Ships[zi][zx+1] = new Ship(p1Ships[zi][zx].getColor(),Ship.shipClass.CRUISER);
+//                            p1Ships[zi][zx+2] = new Ship(p1Ships[zi][zx].getColor(),Ship.shipClass.CRUISER);
+//                        }
+//                        if(p1Ships[zi][zx].getType() == Ship.shipClass.SUB) {
+//                            p1Ships[zi][zx+1] = new Ship(p1Ships[zi][zx].getColor(),Ship.shipClass.SUB);
+//                            p1Ships[zi][zx+2] = new Ship(p1Ships[zi][zx].getColor(),Ship.shipClass.SUB);
+//                        }
+//                        if(p1Ships[zi][zx].getType() == Ship.shipClass.CARRIER) {
+//                            p1Ships[zi][zx+1] = new Ship(p1Ships[zi][zx].getColor(),Ship.shipClass.CARRIER);
+//                            p1Ships[zi][zx+2] = new Ship(p1Ships[zi][zx].getColor(),Ship.shipClass.CARRIER);
+//                            p1Ships[zi][zx+3] = new Ship(p1Ships[zi][zx].getColor(),Ship.shipClass.CARRIER);
+//                        }
+//                        if(p1Ships[zi][zx].getType() == Ship.shipClass.DESTROYER) {
+//                            p1Ships[zi][zx+1] = new Ship(p1Ships[zi][zx].getColor(),Ship.shipClass.DESTROYER);
+//                            p1Ships[zi][zx+2] = new Ship(p1Ships[zi][zx].getColor(),Ship.shipClass.DESTROYER);
+//                            p1Ships[zi][zx+3] = new Ship(p1Ships[zi][zx].getColor(),Ship.shipClass.DESTROYER);
+//                            p1Ships[zi][zx+4] = new Ship(p1Ships[zi][zx].getColor(),Ship.shipClass.DESTROYER);
+//                        }
                         p1Ships[zi][zx].drawShip(g, zi, zx, xdelta, ydelta);
                     }
                 }

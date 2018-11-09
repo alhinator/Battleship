@@ -74,15 +74,15 @@ public class Ship extends Token {
 
     public void drawShip(Graphics2D g, int row, int column, int xdelta, int ydelta) {
 
-        if (shipType == shipClass.SCOUT && boxID == 1) {
+        if (shipType == shipClass.SCOUT) {
             g.drawImage(Scout, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta * 2, ydelta, super.mainClassInst);
-        } else if (shipType == shipClass.CRUISER && boxID == 1) {
+        } else if (shipType == shipClass.CRUISER) {
            g.drawImage(Cruiser, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta * 3, ydelta, super.mainClassInst);
-        } else if (shipType == shipClass.SUB && boxID == 1) {
+        } else if (shipType == shipClass.SUB) {
             g.drawImage(Submarine, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta * 3, ydelta, super.mainClassInst);
-        } else if (shipType == shipClass.CARRIER && boxID == 1) {
+        } else if (shipType == shipClass.CARRIER) {
             g.drawImage(Carrier, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta * 4, ydelta, super.mainClassInst);
-        } else if (shipType == shipClass.DESTROYER && boxID == 1) {
+        } else if (shipType == shipClass.DESTROYER) {
             g.drawImage(Destroyer, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta * 5, ydelta, super.mainClassInst);
         } else if (shipType == shipClass.HIT) {
             g.drawImage(hitGif, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta, ydelta, super.mainClassInst);
