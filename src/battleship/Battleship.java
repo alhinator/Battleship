@@ -65,12 +65,18 @@ public class Battleship extends JFrame implements Runnable {
                         if (startScreen) { //clicking "start" box will make the screen big.
                             if (xpos > 13 && xpos < 13 + 240 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
                                 switchSize();
+<<<<<<< HEAD
                             }                    
 
                             else if (xpos > 13 + 245 && xpos < 13 + 480 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
                                 rulesScreen = true;
                                 System.out.println("hi");
 
+=======
+                            }
+                            else if (xpos > 13 + 240 && xpos < 13 + 4800 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
+                                switchSize2();
+>>>>>>> 3babc408b9e1c827e20b5eb56906d02d6fa635ca
                             }
                         } else if (!switchScreen && !startScreen) { //add token when placing board is active                                                     
                             if (Board.AddTokenPixel(e.getX() - Window.getX(0),
@@ -307,6 +313,11 @@ public class Battleship extends JFrame implements Runnable {
             frame.setLocationRelativeTo(null);
 
         }
+    }
+    
+    public void switchSize2(){
+        rulesScreen = !rulesScreen;
+    
     }
 
 }
