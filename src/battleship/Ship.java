@@ -9,9 +9,16 @@ import java.io.File;
 import java.awt.Color;
 
 public class Ship extends Token {
-
+    public static int scoutBoxes = 0;
+    public static int cruiserBoxes = 0;
+    public static int subBoxes = 0;
+    public static int carrierBoxes = 0;
+    public static int destroyerBoxes = 0;
+    public int boxID;
     public static final int MAX_SHIPS = 5;
-
+    public static final int P1_SHIPS = 1;
+    public static final int P2_SHIPS = 2;
+    public int SHIP_BOARD;
     public static int p1ShipsPlaced = 0;
     public static int p2ShipsPlaced = 0;
 
@@ -33,19 +40,41 @@ public class Ship extends Token {
     public boolean hit;
     private int health;
 
-    Ship(Color _color, shipClass type) {
+    Ship(Color _color, shipClass type, int _SHIP_BOARD) {
         super(_color);
         shipType = type;
+        SHIP_BOARD = _SHIP_BOARD;
         if (shipType == shipClass.SCOUT) {
             health = 2;
+            scoutBoxes++;
+            System.out.println(scoutBoxes);
+            boxID = scoutBoxes;
+            if(scoutBoxes >= health)
+                scoutBoxes = 0;
         } else if (shipType == shipClass.CRUISER) {
             health = 3;
+            cruiserBoxes++;
+            boxID = cruiserBoxes;
+            if(cruiserBoxes >= health)
+                cruiserBoxes = 0;
         } else if (shipType == shipClass.SUB) {
             health = 3;
+            subBoxes++;          
+            boxID = subBoxes;
+            if(subBoxes >= health)
+                subBoxes = 0;
         } else if (shipType == shipClass.CARRIER) {
             health = 4;
+            carrierBoxes++;
+            boxID = carrierBoxes;
+            if(carrierBoxes >= health)
+                carrierBoxes = 0;
         } else if (shipType == shipClass.DESTROYER) {
             health = 5;
+            destroyerBoxes++;
+            boxID = destroyerBoxes;
+            if(destroyerBoxes >= health)
+                destroyerBoxes = 0;
         }
     }
 
@@ -58,17 +87,22 @@ public class Ship extends Token {
     }
 
     public void drawShip(Graphics2D g, int row, int column, int xdelta, int ydelta) {
-
-        if (shipType == shipClass.SCOUT) {
-            g.drawImage(Scout, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta * 2, ydelta, super.mainClassInst);
+        
+            if (shipType == shipClass.SCOUT) {
+            if(boxID == 1)
+                g.drawImage(Scout, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta * 2, ydelta, super.mainClassInst);
         } else if (shipType == shipClass.CRUISER) {
-            g.drawImage(Cruiser, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta * 3, ydelta, super.mainClassInst);
+            if(boxID == 1)
+                g.drawImage(Cruiser, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta * 3, ydelta, super.mainClassInst);
         } else if (shipType == shipClass.SUB) {
-            g.drawImage(Submarine, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta * 3, ydelta, super.mainClassInst);
+            if(boxID == 1)
+                g.drawImage(Submarine, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta * 3, ydelta, super.mainClassInst);
         } else if (shipType == shipClass.CARRIER) {
-            g.drawImage(Carrier, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta * 4, ydelta, super.mainClassInst);
+            if(boxID == 1)
+                g.drawImage(Carrier, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta * 4, ydelta, super.mainClassInst);
         } else if (shipType == shipClass.DESTROYER) {
-            g.drawImage(Destroyer, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta * 5, ydelta, super.mainClassInst);
+            if(boxID == 1)
+                g.drawImage(Destroyer, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta * 5, ydelta, super.mainClassInst);
         } else if (shipType == shipClass.HIT) {
             g.drawImage(hitGif, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta, ydelta, super.mainClassInst);
         } else if (shipType == shipClass.MISS) {
@@ -97,4 +131,7 @@ public class Ship extends Token {
         sunk = true;
         hit = true;
     }
+    public int getID() {
+        return boxID;
+   }
 }
