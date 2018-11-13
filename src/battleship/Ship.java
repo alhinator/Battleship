@@ -122,7 +122,9 @@ public class Ship extends Token {
     public int getHealth() {
         return health;
     }
-
+    public void reduceHealth() {
+        health--;
+    }
     public boolean isSunk() {
         return sunk;
     }
