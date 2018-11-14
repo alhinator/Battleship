@@ -30,7 +30,7 @@ public class Battleship extends JFrame implements Runnable {
     //if win is 1, player 1 won.
     //if win is 2, player 2 won.
     int win = 0;
-
+    static boolean mute = false;
     //these screens are the two switchScreens.
     public static Image Screen3 = Toolkit.getDefaultToolkit().getImage("./assets/Screen3.jpg");
     public static Image Screen4 = Toolkit.getDefaultToolkit().getImage("./assets/Screen4.jpeg");
@@ -147,6 +147,11 @@ public class Battleship extends JFrame implements Runnable {
                 } else if (e.VK_ESCAPE == e.getKeyCode()) {
                     //reset(); //WARNING! CAUSES NULLPOINTER
                 }
+                else if (e.VK_M == e.getKeyCode()) {
+                    mute = !mute;
+                   System.out.println(mute);
+                       
+                } 
                 repaint();
             }
         });
@@ -287,10 +292,14 @@ public class Battleship extends JFrame implements Runnable {
                 Window.ysize = getSize().height;
             }
             reset();
-          thomasSound = new sound("./assets/Tina.wav");
+        
+          thomasSound = new sound("./assets/Titlesong.wav");
         }
+        
          if (thomasSound.donePlaying)       
-            thomasSound = new sound("./assets/Tina.wav");
+            thomasSound = new sound("./assets/Titlesong.wav");
+         if(mute)
+     thomasSound = null;
         //Checking for wins
         win = Board.checkWin();
 

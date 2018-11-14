@@ -12,6 +12,7 @@ class sound implements Runnable {
     
     Thread myThread;
     File soundFile;
+    Battleship battleship;
     public boolean donePlaying = false;
     sound(String _name)
     {
@@ -20,7 +21,9 @@ class sound implements Runnable {
         myThread.start();
     }
     public void run()
+            
     {
+        if(!battleship.mute){
         try {
         AudioInputStream ais = AudioSystem.getAudioInputStream(soundFile);
         AudioFormat format = ais.getFormat();
@@ -46,6 +49,7 @@ class sound implements Runnable {
             System.out.println("error: " + exc.getMessage());
             exc.printStackTrace();
         }
+      }
     }
 
 }
