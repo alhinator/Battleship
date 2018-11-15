@@ -14,6 +14,8 @@ public class Battleship extends JFrame implements Runnable {
     Image image;
     Graphics2D g;
 
+    public static boolean finalScreen= false;
+    
     // freeze is for when we dont want anythign to happen.
     boolean freeze = false;
 
@@ -30,7 +32,7 @@ public class Battleship extends JFrame implements Runnable {
     //if win is 1, player 1 won.
     //if win is 2, player 2 won.
     int win = 0;
-
+    int meow = 0;
     //these screens are the two switchScreens.
     public static Image Screen3 = Toolkit.getDefaultToolkit().getImage("./assets/Screen3.jpg");
     public static Image Screen4 = Toolkit.getDefaultToolkit().getImage("./assets/Screen4.jpeg");
@@ -72,15 +74,12 @@ public class Battleship extends JFrame implements Runnable {
                             if (xpos > 13 && xpos < 13 + 240 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
                                 switchSize();
 
-                            }                    
+                            } else if (xpos > 13 + 245 && xpos < 13 + 480 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
 
-                            else if (xpos > 13 + 245 && xpos < 13 + 480 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
-                                
                                 switchSize2();
 
                             }
 
-                           
                         } else if (!switchScreen && !startScreen && !rulesScreen) { //add token when placing board is active                                                     
                             if (Board.AddTokenPixel(e.getX() - Window.getX(0),
                                     e.getY() - Window.getY(0), alreadyPlaced)) {
@@ -141,7 +140,7 @@ public class Battleship extends JFrame implements Runnable {
                 } else if (e.VK_DOWN == e.getKeyCode()) {
                     switchScreen = !switchScreen; //FOR TESTING
                 } else if (e.VK_LEFT == e.getKeyCode()) {
-
+                    setSize3();
                 } else if (e.VK_RIGHT == e.getKeyCode()) {
 
                 } else if (e.VK_ESCAPE == e.getKeyCode()) {
@@ -193,8 +192,11 @@ public class Battleship extends JFrame implements Runnable {
             return;
         }
 
-        Board.Draw(g); //drawing grid and tokens.
-
+        if (!finalScreen)
+            Board.Draw(g); //drawing grid and tokens.
+        else
+            Board.draw2(g);
+        
         //drawing scores
         g.setColor(Player.getPlayers()[0].getColor());
         g.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
@@ -230,14 +232,16 @@ public class Battleship extends JFrame implements Runnable {
             }
         }
         if (win == 1) {
-            g.setColor(Color.black);
-            g.fillRect(Window.getX(0), Window.getY(0), Window.getWidth2() + 1, Window.getHeight2() + 1);
+//            g.setColor(Color.black);
+//            g.fillRect(Window.getX(0), Window.getY(0), Window.getWidth2() + 1, Window.getHeight2() + 1);
+            Board.displayBoard(g, win);
             g.setColor(Player.getPlayers()[0].getColor());
             g.setFont(new Font("Comic Sans MS", Font.PLAIN, 45));
             g.drawString("Player 1 Wins", Window.getWidth2() / 2, Window.getHeight2() / 2);
         } else if (win == 2) {
-            g.setColor(Color.black);
-            g.fillRect(Window.getX(0), Window.getY(0), Window.getWidth2() + 1, Window.getHeight2() + 1);
+//            g.setColor(Color.black);
+//            g.fillRect(Window.getX(0), Window.getY(0), Window.getWidth2() + 1, Window.getHeight2() + 1);
+            Board.displayBoard(g, win);
             g.setColor(Player.getPlayers()[1].getColor());
             g.setFont(new Font("Comic Sans MS", Font.PLAIN, 45));
             g.drawString("Player 2 Wins", Window.getWidth2() / 2, Window.getHeight2() / 2);
@@ -291,7 +295,13 @@ public class Battleship extends JFrame implements Runnable {
 
         //Checking for wins
         win = Board.checkWin();
-
+        if (win != 0) {
+            meow++;
+        }
+        if (meow == 1) {
+            setSize3();
+           
+        }
     }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -329,7 +339,7 @@ public class Battleship extends JFrame implements Runnable {
         if (rulesScreen) {
             startScreen = true;
             rulesScreen = false;
-             frame.setSize(Window.WINDOW_WIDTH_SMALL, Window.WINDOW_HEIGHT_SMALL);
+            frame.setSize(Window.WINDOW_WIDTH_SMALL, Window.WINDOW_HEIGHT_SMALL);
             frame.setLocationRelativeTo(null);
         } else {
             startScreen = false;
@@ -337,10 +347,13 @@ public class Battleship extends JFrame implements Runnable {
             frame.setSize(Window.WINDOW_WIDTH_MED, Window.WINDOW_HEIGHT_MED);
             frame.setLocationRelativeTo(null);
         }
-  
-            
 
-        
+    }
+
+    public void setSize3() {
+        frame.setSize(Window.WINDOW_WIDTH * 2, Window.WINDOW_HEIGHT);
+        frame.setLocationRelativeTo(null);
+        finalScreen = true;
     }
 
 }

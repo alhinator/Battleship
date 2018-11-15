@@ -613,7 +613,47 @@ public class Board {
         }
 
     }
+    public static void displayBoard(Graphics2D g, int win) {
+        int ydelta = Window.getHeight2() / 2 / NUM_ROWS;
+        int xdelta = Window.getWidth2() / NUM_COLUMNS;
+        if (win == 1) {
+            for (int zi = 0; zi < NUM_ROWS; zi++) {
+                for (int zx = 0; zx < NUM_COLUMNS; zx++) {
+                    if (p1Shots[zi][zx] != null) {
+                        p1Shots[zi][zx].draw(g, zi, zx, xdelta, ydelta);
+                    }
+                }
+            }
+        } else {
+            for (int zi = 0; zi < NUM_ROWS; zi++) {
+                for (int zx = 0; zx < NUM_COLUMNS; zx++) {
+                    if (p2Shots[zi][zx] != null) {
+                        p2Shots[zi][zx].draw(g, zi, zx, xdelta, ydelta);
+                    }
+                }
+            }
+        }
 
+        //ships
+        if (win == 1) {
+            for (int zi = 0; zi < NUM_ROWS; zi++) {
+                for (int zx = 0; zx < NUM_COLUMNS; zx++) {
+                    if (p1Ships[zi][zx] != null) {
+                        p1Ships[zi][zx].drawShip(g, zi, zx, xdelta, ydelta);
+                    }
+                }
+            }
+        } else {
+            for (int zi = 0; zi < NUM_ROWS; zi++) {
+                for (int zx = 0; zx < NUM_COLUMNS; zx++) {
+                    if (p2Ships[zi][zx] != null) {
+                        p2Ships[zi][zx].drawShip(g, zi, zx, xdelta, ydelta);
+                    }
+                }
+            }
+        }
+
+    }
     public static boolean checkHit(int row, int col) {
         if (row > NUM_ROWS || col > NUM_COLUMNS || row < 0 || col < 0) {
             return false;
@@ -719,5 +759,86 @@ public class Board {
         return 0;
 
     }
+    
+    
+    
+    public static void draw2(Graphics2D g) {
+//Calculate the width and height of each board square.
+        int ydelta = Window.getHeight2() / 2 / NUM_ROWS;
+        int xdelta = Window.getWidth2() / NUM_COLUMNS;
+        g.drawImage(oceanBG, Window.getX(0), Window.getY(0), Window.getWidth2(), Window.getHeight2(), mainClassInst);
+
+        //Draw the grid.
+        g.setColor(Player.getPlayers()[0].getColor());
+
+        for (int zi = 1; zi < NUM_ROWS; zi++) {
+            g.drawLine(Window.getX(0), Window.getY(zi * ydelta),
+                    Window.getX(Window.getWidth2()), Window.getY(zi * ydelta));
+        }
+
+        for (int zi = 1; zi < NUM_COLUMNS; zi++) {
+            g.drawLine(Window.getX(zi * xdelta), Window.getY(0),
+                    Window.getX(zi * xdelta), Window.getY(Window.getHeight2() / 2));
+        }
+
+        g.drawLine(Window.getX(0), Window.getY(Window.getHeight2() / 2), Window.getX(Window.getWidth2()), Window.getY(Window.getHeight2() / 2));
+
+        g.setColor(Color.black);
+
+        for (int zi = 1; zi < NUM_ROWS; zi++) {
+            g.drawLine(Window.getX(0), Window.getY(zi * ydelta + Window.getHeight2() / 2),
+                    Window.getX(Window.getWidth2()), Window.getY(zi * ydelta + Window.getHeight2() / 2));
+        }
+
+        for (int zi = 1; zi < NUM_COLUMNS; zi++) {
+            g.drawLine(Window.getX(zi * xdelta), Window.getY(Window.getHeight2() / 2),
+                    Window.getX(zi * xdelta), Window.getY(Window.getHeight2()));
+        }
+
+        g.drawLine(Window.getX(0), Window.getY(Window.getHeight2()), Window.getX(Window.getWidth2()), Window.getY(Window.getHeight2()));
+
+//Draw the tokens.    
+        //shots
+        if (Player.getCurrentPlayer() == Player.getPlayers()[0]) {
+            for (int zi = 0; zi < NUM_ROWS; zi++) {
+                for (int zx = 0; zx < NUM_COLUMNS; zx++) {
+                    if (p1Shots[zi][zx] != null) {
+                        p1Shots[zi][zx].draw(g, zi, zx, xdelta, ydelta);
+                    }
+                }
+            }
+        } else {
+            for (int zi = 0; zi < NUM_ROWS; zi++) {
+                for (int zx = 0; zx < NUM_COLUMNS; zx++) {
+                    if (p2Shots[zi][zx] != null) {
+                        p2Shots[zi][zx].draw(g, zi, zx, xdelta, ydelta);
+                    }
+                }
+            }
+        }
+
+        //ships
+        if (Player.getCurrentPlayer() == Player.getPlayers()[0]) {
+            for (int zi = 0; zi < NUM_ROWS; zi++) {
+                for (int zx = 0; zx < NUM_COLUMNS; zx++) {
+                    if (p1Ships[zi][zx] != null) {
+                        p1Ships[zi][zx].drawShip(g, zi, zx, xdelta, ydelta);
+                    }
+                }
+            }
+        } else {
+            for (int zi = 0; zi < NUM_ROWS; zi++) {
+                for (int zx = 0; zx < NUM_COLUMNS; zx++) {
+                    if (p2Ships[zi][zx] != null) {
+                        p2Ships[zi][zx].drawShip(g, zi, zx, xdelta, ydelta);
+                    }
+                }
+            }
+        }
+
+    }
 
 }
+
+
+
