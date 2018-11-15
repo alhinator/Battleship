@@ -16,12 +16,10 @@ public class Ship extends Token {
     public static int destroyerBoxes = 0;
     public int boxID;
     public static final int MAX_SHIPS = 5;
-    public static final int P1_SHIPS = 1;
-    public static final int P2_SHIPS = 2;
     public int SHIP_BOARD;
     public static int p1ShipsPlaced = 0;
     public static int p2ShipsPlaced = 0;
-
+    
     public static Image Cruiser = Toolkit.getDefaultToolkit().getImage("./assets/Cruiser.png");
     public static Image Scout = Toolkit.getDefaultToolkit().getImage("./assets/Scout.png");
     public static Image Submarine = Toolkit.getDefaultToolkit().getImage("./assets/Submarine.png");
@@ -38,42 +36,59 @@ public class Ship extends Token {
     private shipClass shipType;
     private boolean sunk;
     public boolean hit;
-    private int health;
+    public static final int P1_SHIPS = 1;
+    public static final int P2_SHIPS = 2;
+
+    public static int scoutHealth_P1;
+    public static int cruiserHealth_P1;
+    public static int subHealth_P1;
+    public static int carrierHealth_P1;
+    public static int destroyerHealth_P1;
+
+    public static int scoutHealth_P2;
+    public static int cruiserHealth_P2;
+    public static int subHealth_P2;
+    public static int carrierHealth_P2;
+    public static int destroyerHealth_P2;
 
     Ship(Color _color, shipClass type, int _SHIP_BOARD) {
         super(_color);
         shipType = type;
         SHIP_BOARD = _SHIP_BOARD;
         if (shipType == shipClass.SCOUT) {
-            health = 2;
+            scoutHealth_P1 = 2;
+            scoutHealth_P2 = 2;
             scoutBoxes++;
-            System.out.println(scoutBoxes);
             boxID = scoutBoxes;
-            if(scoutBoxes >= health)
+            if(scoutBoxes >= scoutHealth_P1)
                 scoutBoxes = 0;
         } else if (shipType == shipClass.CRUISER) {
-            health = 3;
+            cruiserHealth_P1 = 3;
+            cruiserHealth_P2 = 3;
             cruiserBoxes++;
             boxID = cruiserBoxes;
-            if(cruiserBoxes >= health)
+            if(cruiserBoxes >= cruiserHealth_P1)
                 cruiserBoxes = 0;
         } else if (shipType == shipClass.SUB) {
-            health = 3;
+            subHealth_P1 = 3;
+            subHealth_P2 = 3;
             subBoxes++;          
             boxID = subBoxes;
-            if(subBoxes >= health)
+            if(subBoxes >= subHealth_P1)
                 subBoxes = 0;
         } else if (shipType == shipClass.CARRIER) {
-            health = 4;
+            carrierHealth_P1 = 4;
+            carrierHealth_P2 = 4;
             carrierBoxes++;
             boxID = carrierBoxes;
-            if(carrierBoxes >= health)
+            if(carrierBoxes >= carrierHealth_P1)
                 carrierBoxes = 0;
         } else if (shipType == shipClass.DESTROYER) {
-            health = 5;
+            destroyerHealth_P1 = 5;
+            destroyerHealth_P2 = 5;
             destroyerBoxes++;
             boxID = destroyerBoxes;
-            if(destroyerBoxes >= health)
+            if(destroyerBoxes >= destroyerHealth_P1)
                 destroyerBoxes = 0;
         }
     }
@@ -119,14 +134,40 @@ public class Ship extends Token {
         return shipType;
     }
 
-    public int getHealth() {
-        return health;
-    }
-    public void reduceHealth() {
-        health--;
-    }
-    public boolean isSunk() {
-        return sunk;
+    public boolean isSunk(shipClass type, int SHIP_BOARD) {
+        int scoutHealth = 2;
+        int cruiserHealth = 3;
+        int subHealth = 3;
+        int carrierHealth = 4;
+        int destroyerHealth = 5;
+        
+        if(SHIP_BOARD == 1) {
+            scoutHealth = scoutHealth_P1;
+            cruiserHealth = cruiserHealth_P1;
+            subHealth = subHealth_P1;
+            carrierHealth = carrierHealth_P1;
+            destroyerHealth = destroyerHealth_P1;
+        }
+        else {
+            scoutHealth = scoutHealth_P2;
+            cruiserHealth = cruiserHealth_P2;
+            subHealth = subHealth_P2;
+            carrierHealth = carrierHealth_P2;
+            destroyerHealth = destroyerHealth_P2;            
+        }
+            
+        if(type == shipClass.SCOUT && scoutHealth <= 0)
+            return true;
+        else if(type == shipClass.CRUISER && cruiserHealth <= 0)
+            return true;
+        else if(type == shipClass.SUB && subHealth <= 0)
+            return true;
+        else if(type == shipClass.CARRIER && carrierHealth <= 0)
+            return true;
+        else if(type == shipClass.DESTROYER && destroyerHealth <= 0)
+            return true;
+        else 
+            return false;
     }
 
     public void shipSank() {

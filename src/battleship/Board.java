@@ -78,7 +78,6 @@ public class Board {
 
     public static boolean AddTokenPixel(int xpixel, int ypixel, boolean alreadyPlaced) {
         int currCol = getCol(xpixel);
-
         if (placingShips) {
             int currRow = getRowShips(ypixel);
             if (xpixel < 0 || xpixel > Window.getWidth2() || ypixel < Window.getHeight2() / 2
@@ -624,6 +623,16 @@ public class Board {
             //check opposite board implementation
             if (p2Ships[row][col] != null) {
                 p2Ships[row][col].shipSank();
+                if(p2Ships[row][col].getType() == Ship.shipClass.SCOUT)
+                    Ship.scoutHealth_P2--;
+                else if(p2Ships[row][col].getType() == Ship.shipClass.CRUISER) 
+                    Ship.cruiserHealth_P2--;
+                else if(p2Ships[row][col].getType() == Ship.shipClass.SUB)
+                    Ship.subHealth_P2--;
+                else if(p2Ships[row][col].getType() == Ship.shipClass.CARRIER)
+                    Ship.carrierHealth_P2--;
+                else if(p2Ships[row][col].getType() == Ship.shipClass.DESTROYER)
+                    Ship.destroyerHealth_P2--;
                 p1Shots[row][col].isahit();
                 Player.getPlayers()[0].addPoints(1);
                 return true;
@@ -635,6 +644,16 @@ public class Board {
             //same code, but for diff player
             if (p1Ships[row][col] != null) {
                 p1Ships[row][col].shipSank();
+                if(p1Ships[row][col].getType() == Ship.shipClass.SCOUT)
+                    Ship.scoutHealth_P1--;
+                else if(p1Ships[row][col].getType() == Ship.shipClass.CRUISER) 
+                    Ship.cruiserHealth_P1--;
+                else if(p1Ships[row][col].getType() == Ship.shipClass.SUB)
+                    Ship.subHealth_P1--;
+                else if(p1Ships[row][col].getType() == Ship.shipClass.CARRIER)
+                    Ship.carrierHealth_P1--;
+                else if(p1Ships[row][col].getType() == Ship.shipClass.DESTROYER)
+                    Ship.destroyerHealth_P1--;
                 p2Shots[row][col].isahit();
                 Player.getPlayers()[1].addPoints(1);
                 return true;
@@ -658,15 +677,15 @@ public class Board {
             for (int zi = 0; zi < NUM_ROWS; zi++) {
                 for (int zx = 0; zx < NUM_COLUMNS; zx++) {
                     if (p1Ships[zi][zx] != null) {
-                        if (p1Ships[zi][zx].getType() == Ship.shipClass.DESTROYER && p1Ships[zi][zx].isSunk()) {
+                        if (p1Ships[zi][zx].getType() == Ship.shipClass.DESTROYER && p1Ships[zi][zx].isSunk(p1Ships[zi][zx].getType(),Ship.P1_SHIPS)) {
                             DestroyerSunk = true;
-                        } else if (p1Ships[zi][zx].getType() == Ship.shipClass.CARRIER && p1Ships[zi][zx].isSunk()) {
+                        } else if (p1Ships[zi][zx].getType() == Ship.shipClass.CARRIER && p1Ships[zi][zx].isSunk(p1Ships[zi][zx].getType(),Ship.P1_SHIPS)) {
                             CarrierSunk = true;
-                        } else if (p1Ships[zi][zx].getType() == Ship.shipClass.SUB && p1Ships[zi][zx].isSunk()) {
+                        } else if (p1Ships[zi][zx].getType() == Ship.shipClass.SUB && p1Ships[zi][zx].isSunk(p1Ships[zi][zx].getType(),Ship.P1_SHIPS)) {
                             SubSunk = true;
-                        } else if (p1Ships[zi][zx].getType() == Ship.shipClass.CRUISER && p1Ships[zi][zx].isSunk()) {
+                        } else if (p1Ships[zi][zx].getType() == Ship.shipClass.CRUISER && p1Ships[zi][zx].isSunk(p1Ships[zi][zx].getType(),Ship.P1_SHIPS)) {
                             CruiserSunk = true;
-                        } else if (p1Ships[zi][zx].getType() == Ship.shipClass.SCOUT && p1Ships[zi][zx].isSunk()) {
+                        } else if (p1Ships[zi][zx].getType() == Ship.shipClass.SCOUT && p1Ships[zi][zx].isSunk(p1Ships[zi][zx].getType(),Ship.P1_SHIPS)) {
                             ScoutSunk = true;
                         }
                     }
@@ -679,15 +698,15 @@ public class Board {
             for (int zi = 0; zi < NUM_ROWS; zi++) {
                 for (int zx = 0; zx < NUM_COLUMNS; zx++) {
                     if (p2Ships[zi][zx] != null) {
-                        if (p2Ships[zi][zx].getType() == Ship.shipClass.DESTROYER && p2Ships[zi][zx].isSunk()) {
+                        if (p2Ships[zi][zx].getType() == Ship.shipClass.DESTROYER && p2Ships[zi][zx].isSunk(p2Ships[zi][zx].getType(),Ship.P2_SHIPS)) {
                             DestroyerSunk = true;
-                        } else if (p2Ships[zi][zx].getType() == Ship.shipClass.CARRIER && p2Ships[zi][zx].isSunk()) {
+                        } else if (p2Ships[zi][zx].getType() == Ship.shipClass.CARRIER && p2Ships[zi][zx].isSunk(p2Ships[zi][zx].getType(),Ship.P2_SHIPS)) {
                             CarrierSunk = true;
-                        } else if (p2Ships[zi][zx].getType() == Ship.shipClass.SUB && p2Ships[zi][zx].isSunk()) {
+                        } else if (p2Ships[zi][zx].getType() == Ship.shipClass.SUB && p2Ships[zi][zx].isSunk(p2Ships[zi][zx].getType(),Ship.P2_SHIPS)) {
                             SubSunk = true;
-                        } else if (p2Ships[zi][zx].getType() == Ship.shipClass.CRUISER && p2Ships[zi][zx].isSunk()) {
+                        } else if (p2Ships[zi][zx].getType() == Ship.shipClass.CRUISER && p2Ships[zi][zx].isSunk(p2Ships[zi][zx].getType(),Ship.P2_SHIPS)) {
                             CruiserSunk = true;
-                        } else if (p2Ships[zi][zx].getType() == Ship.shipClass.SCOUT && p2Ships[zi][zx].isSunk()) {
+                        } else if (p2Ships[zi][zx].getType() == Ship.shipClass.SCOUT && p2Ships[zi][zx].isSunk(p2Ships[zi][zx].getType(),Ship.P2_SHIPS)) {
                             ScoutSunk = true;
                         }
                     }
