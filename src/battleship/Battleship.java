@@ -7,13 +7,14 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.io.File;
 import java.awt.Color;
-
+import javax.sound.sampled.*;
+import javax.imageio.ImageIO;
 public class Battleship extends JFrame implements Runnable {
 
     boolean animateFirstTime = true;
     Image image;
     Graphics2D g;
-
+    sound  thomasSound = null;
     public static boolean finalScreen= false;
     
     // freeze is for when we dont want anythign to happen.
@@ -24,6 +25,8 @@ public class Battleship extends JFrame implements Runnable {
     public static boolean rulesScreen = false;
     boolean switchScreen = false;
 
+    boolean yee = false;
+    
     //alreadyPlaced determines whether a player has placed a token or not on their turn.
     //this is in main class so that mouseEvent handlers can access it w/o using class handles
     public static boolean alreadyPlaced = false;
@@ -46,12 +49,23 @@ public class Battleship extends JFrame implements Runnable {
     //this is the frame. it is outside of main so that it can be accessed in other methods.
     static Battleship frame;
 
+    
+    
+    
+    
+    //yee
+    public static Image winImg = Toolkit.getDefaultToolkit().getImage("./assets/win.png");
+
     public static void main(String[] args) {
         //frame settings. DO NOT CHANGE
         frame = new Battleship();
         frame.setSize(Window.WINDOW_WIDTH_SMALL, Window.WINDOW_HEIGHT_SMALL);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
+        frame.setIconImage(new ImageIcon("./assets/b.png").getImage());
+        //frame.setTitleBar(Color.white);
+        frame.setTitle("BATTLESHIP - JIN, ALEX, GUY, JOE");
+        frame.setResizable(false);
         frame.setVisible(true);
     }
 
@@ -146,6 +160,12 @@ public class Battleship extends JFrame implements Runnable {
                 } else if (e.VK_ESCAPE == e.getKeyCode()) {
                     //reset(); //WARNING! CAUSES NULLPOINTER
                 }
+                
+                
+                if (e.VK_Y == e.getKeyCode()){
+                    //if (finalScreen)
+                        yee();
+                }    
                 repaint();
             }
         });
@@ -192,14 +212,14 @@ public class Battleship extends JFrame implements Runnable {
             return;
         }
 
-        if (!finalScreen)
+        //if (!finalScreen)
             Board.Draw(g); //drawing grid and tokens.
-        else
-            Board.draw2(g);
+        //else
+        //   Board.draw2(g);
         
         //drawing scores
         g.setColor(Player.getPlayers()[0].getColor());
-        g.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
+        g.setFont(new Font("Trebuchet MS", Font.PLAIN, 20));
         g.drawString("P1 score: " + Player.getPlayers()[0].getPoints(), 50, 60);
         g.setColor(Player.getPlayers()[1].getColor());
         g.drawString("P2 score: " + Player.getPlayers()[1].getPoints(), 175, 60);
@@ -212,11 +232,15 @@ public class Battleship extends JFrame implements Runnable {
         g.setColor(Color.gray);
         g.fillRect(Window.getWidth2() + Window.getXBorder() - 100, 0, 100, 70);
         g.setColor(Color.black);
-        g.drawString("CONFIRM", Window.getWidth2() + Window.getXBorder() - 99, 60);
+        if (!switchScreen)
+            g.drawString("CONFIRM", Window.getWidth2() + Window.getXBorder() - 93, 60);
+        else 
+            g.drawString("READY", Window.getWidth2() + Window.getXBorder() - 80, 60);
+            
 
         //drawing switchScreens
         if (switchScreen) {
-            g.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
+            g.setFont(new Font("Trebuchet MS", Font.PLAIN, 30));
             g.setColor(Color.black);
             g.fillRect(Window.getX(0), Window.getY(0), Window.getWidth2() + 1, Window.getHeight2() + 1);
             if (Player.getCurrentPlayer() == Player.getPlayers()[0]) {
@@ -236,14 +260,14 @@ public class Battleship extends JFrame implements Runnable {
 //            g.fillRect(Window.getX(0), Window.getY(0), Window.getWidth2() + 1, Window.getHeight2() + 1);
             Board.displayBoard(g, win);
             g.setColor(Player.getPlayers()[0].getColor());
-            g.setFont(new Font("Comic Sans MS", Font.PLAIN, 45));
+            g.setFont(new Font("Trebuchet MS", Font.PLAIN, 45));
             g.drawString("Player 1 Wins", Window.getWidth2() / 2, Window.getHeight2() / 2);
         } else if (win == 2) {
 //            g.setColor(Color.black);
 //            g.fillRect(Window.getX(0), Window.getY(0), Window.getWidth2() + 1, Window.getHeight2() + 1);
             Board.displayBoard(g, win);
             g.setColor(Player.getPlayers()[1].getColor());
-            g.setFont(new Font("Comic Sans MS", Font.PLAIN, 45));
+            g.setFont(new Font("Trebuchet MS", Font.PLAIN, 45));
             g.drawString("Player 2 Wins", Window.getWidth2() / 2, Window.getHeight2() / 2);
         }
         //drawing startScreen
@@ -251,8 +275,13 @@ public class Battleship extends JFrame implements Runnable {
             g.drawImage(Loadingscreen, 0, Window.getYBorder(), Window.WINDOW_WIDTH_SMALL, Window.WINDOW_HEIGHT_SMALL - Window.getYBorder(), this);
         }
         if (rulesScreen) {
-            g.drawImage(rulesImg, 0, Window.getYBorder(), Window.WINDOW_WIDTH_MED, Window.WINDOW_HEIGHT_MED - Window.getYBorder(), this);
+            g.drawImage(rulesImg, 0, Window.getYBorder() + 5, Window.WINDOW_WIDTH_MED, Window.WINDOW_HEIGHT_MED - Window.getYBorder(), this);
         }
+        if (yee){
+            g.drawImage(winImg, 0, Window.getYBorder() + 10, Window.WINDOW_WIDTH_YEE, Window.WINDOW_HEIGHT_YEE - Window.getYBorder(), this);            
+        }
+        
+        
         gOld.drawImage(image, 0, 0, null);
     }
 
@@ -360,4 +389,10 @@ public class Battleship extends JFrame implements Runnable {
         finalScreen = true;
     }
 
+    public void yee(){
+        frame.setSize(Window.WINDOW_WIDTH_YEE, Window.WINDOW_HEIGHT_YEE);
+        frame.setLocationRelativeTo(null);
+        yee = true;
+    }
+    
 }

@@ -1,3 +1,4 @@
+package battleship;
 import java.io.*;
 import java.awt.*;
 import java.awt.geom.*;
@@ -6,6 +7,7 @@ import javax.swing.*;
 import java.io.File;
 import java.awt.Color;
 import javax.sound.sampled.*;
+
 class sound implements Runnable {
     
     Thread myThread;

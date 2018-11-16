@@ -13,10 +13,12 @@ public class Window {
 
     static final int WINDOW_WIDTH = 2 * (WINDOW_BORDER + XBORDER) + 600;
     static final int WINDOW_HEIGHT = YTITLE + WINDOW_BORDER + 1000;
-    static final int WINDOW_WIDTH_SMALL = 500;
-    static final int WINDOW_HEIGHT_SMALL = 300;
-    static final int WINDOW_WIDTH_MED = 500;
-    static final int WINDOW_HEIGHT_MED = 600;
+    static final int WINDOW_WIDTH_SMALL = 400;
+    static final int WINDOW_HEIGHT_SMALL = 242 + YBORDER;
+    static final int WINDOW_WIDTH_MED = 676;
+    static final int WINDOW_HEIGHT_MED =  752 + YBORDER;
+    static final int WINDOW_WIDTH_YEE = 1152;
+    static final int WINDOW_HEIGHT_YEE =  648 + YBORDER;
     static int xsize = -1;
     static int ysize = -1;
 
