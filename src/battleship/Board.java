@@ -19,10 +19,12 @@ public class Board {
     private static Token p2Shots[][] = new Token[NUM_ROWS][NUM_COLUMNS];
 
     public static Image oceanBG = Toolkit.getDefaultToolkit().getImage("./assets/Ocean_Background.jpg");
+    
     public static int mostRecentRow;
     public static int mostRecentCol;
     public static boolean placingShips;
-
+    public static sound bomb = null;
+    public static sound splash = null;
     public static void Reset() {
 
         for (int zi = 0; zi < NUM_ROWS; zi++) {
@@ -674,10 +676,12 @@ public class Board {
                 else if(p2Ships[row][col].getType() == Ship.shipClass.DESTROYER)
                     Ship.destroyerHealth_P2--;
                 p1Shots[row][col].isahit();
+                bomb = new sound("./assets/Bomb.wav");
                 Player.getPlayers()[0].addPoints(1);
                 return true;
             } else {
                 p2Ships[row][col] = new Ship(Color.black, Ship.shipClass.MISS,0);
+                  splash = new sound("./assets/Splash.wav");
             }
 
         } else if (Player.getCurrentPlayer() == Player.getPlayers()[1]) {
@@ -695,10 +699,12 @@ public class Board {
                 else if(p1Ships[row][col].getType() == Ship.shipClass.DESTROYER)
                     Ship.destroyerHealth_P1--;
                 p2Shots[row][col].isahit();
+                bomb = new sound("./assets/Bomb.wav");
                 Player.getPlayers()[1].addPoints(1);
                 return true;
             } else {
                 p1Ships[row][col] = new Ship(Color.black, Ship.shipClass.MISS,0);
+                splash = new sound("./assets/Splash.wav");
             }
         }
 
