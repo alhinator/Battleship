@@ -291,7 +291,11 @@ public class Battleship extends JFrame implements Runnable {
                 Window.ysize = getSize().height;
             }
             reset();
+            thomasSound = new sound("./assets/Titlesong.wav");
         }
+        
+        if (thomasSound.donePlaying)       
+            thomasSound = new sound("./assets/Titlesong.wav");
 
         //Checking for wins
         win = Board.checkWin();
