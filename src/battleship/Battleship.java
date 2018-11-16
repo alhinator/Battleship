@@ -35,7 +35,7 @@ public class Battleship extends JFrame implements Runnable {
     public static Image Screen3 = Toolkit.getDefaultToolkit().getImage("./assets/Screen3.jpg");
     public static Image Screen4 = Toolkit.getDefaultToolkit().getImage("./assets/Screen4.jpeg");
 
-    //contrary to its name, this is the startScreen.
+    //contrary to its name, this is the startScreen.ddddddddddddd
     public static Image Loadingscreen = Toolkit.getDefaultToolkit().getImage("./assets/LoadingScreen1.jpg");
 
     //going to put rules screen here
@@ -72,7 +72,7 @@ public class Battleship extends JFrame implements Runnable {
                             if (xpos > 13 && xpos < 13 + 240 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
                                 switchSize();
 
-<<<<<<< HEAD
+
                             }                    
 
                             else if (xpos > 13 + 245 && xpos < 13 + 480 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
@@ -82,9 +82,9 @@ public class Battleship extends JFrame implements Runnable {
 
                             }
                             else if (xpos > 13 + 240 && xpos < 13 + 4800 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
-=======
+
                             } else if (xpos > 13 + 240 && xpos < 13 + 4800 && ypos > Window.WINDOW_HEIGHT_SMALL - 60 && ypos < Window.WINDOW_HEIGHT_SMALL - 60 + 45) {
->>>>>>> 41ced68f33bde43b1800cd5633322f0269948c36
+
                                 switchSize2();
 
                             }
