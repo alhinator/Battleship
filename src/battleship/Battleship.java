@@ -342,8 +342,10 @@ public class Battleship extends JFrame implements Runnable {
         if (meow == 1) {
             if ((int)(Math.random()*100) == 0)
                 yee();
-            else
+            else{
             setSize3();
+            
+            }
            
         }
     }
