@@ -19,6 +19,7 @@ public class Board {
     private static Token p2Shots[][] = new Token[NUM_ROWS][NUM_COLUMNS];
 
     public static Image oceanBG = Toolkit.getDefaultToolkit().getImage("./assets/Ocean_Background.jpg");
+    public static Image bg2 = Toolkit.getDefaultToolkit().getImage("./assets/bg2.jpeg");
     
     public static int mostRecentRow;
     public static int mostRecentCol;
@@ -771,15 +772,16 @@ public class Board {
     public static void draw2(Graphics2D g) {
 //Calculate the width and height of each board square.
         int ydelta = Window.getHeight2() / 2 / NUM_ROWS;
-        int xdelta = Window.getWidth2() / NUM_COLUMNS;
-        g.drawImage(oceanBG, Window.getX(0), Window.getY(0), Window.getWidth2(), Window.getHeight2(), mainClassInst);
+        int xdelta = Window.getWidth2() / 2 / NUM_COLUMNS;
+        g.drawImage(bg2, Window.getX(0), Window.getY(0), Window.getWidth2(), Window.getHeight2(), mainClassInst);
 
         //Draw the grid.
+        
         g.setColor(Player.getPlayers()[0].getColor());
 
         for (int zi = 1; zi < NUM_ROWS; zi++) {
             g.drawLine(Window.getX(0), Window.getY(zi * ydelta),
-                    Window.getX(Window.getWidth2()), Window.getY(zi * ydelta));
+                    Window.getX(Window.getWidth2()/2), Window.getY(zi * ydelta));
         }
 
         for (int zi = 1; zi < NUM_COLUMNS; zi++) {
@@ -787,10 +789,13 @@ public class Board {
                     Window.getX(zi * xdelta), Window.getY(Window.getHeight2() / 2));
         }
 
-        g.drawLine(Window.getX(0), Window.getY(Window.getHeight2() / 2), Window.getX(Window.getWidth2()), Window.getY(Window.getHeight2() / 2));
 
         g.setColor(Color.black);
 
+        g.drawLine(Window.getX(0), Window.getY(Window.getHeight2() / 2), Window.getX(Window.getWidth2()), Window.getY(Window.getHeight2() / 2));
+
+        g.drawLine(Window.getX(Window.getWidth2()/2), Window.getY(0), Window.getX(Window.getWidth2()/2), Window.getY(Window.getHeight2()));
+        
         for (int zi = 1; zi < NUM_ROWS; zi++) {
             g.drawLine(Window.getX(0), Window.getY(zi * ydelta + Window.getHeight2() / 2),
                     Window.getX(Window.getWidth2()), Window.getY(zi * ydelta + Window.getHeight2() / 2));
@@ -802,10 +807,39 @@ public class Board {
         }
 
         g.drawLine(Window.getX(0), Window.getY(Window.getHeight2()), Window.getX(Window.getWidth2()), Window.getY(Window.getHeight2()));
+        
+        //draw right grid
+        g.setColor(Player.getPlayers()[1].getColor());
+
+        for (int zi = 1; zi < NUM_ROWS; zi++) {
+            g.drawLine(Window.getX(Window.getWidth2()/2), Window.getY(zi * ydelta),
+                    Window.getX(Window.getWidth2()), Window.getY(zi * ydelta));
+        }
+
+        for (int zi = 1; zi < NUM_COLUMNS; zi++) {
+            g.drawLine(Window.getX(zi * xdelta + Window.getWidth2()/2), Window.getY(0),
+                    Window.getX(zi * xdelta + Window.getWidth2()/2), Window.getY(Window.getHeight2() / 2));
+        }
+
+        
+
+        g.setColor(Color.black);
+
+        for (int zi = 1; zi < NUM_ROWS; zi++) {
+            g.drawLine(Window.getX(0), Window.getY(zi * ydelta + Window.getHeight2() / 2),
+                    Window.getX(Window.getWidth2()), Window.getY(zi * ydelta + Window.getHeight2() / 2));
+        }
+
+        for (int zi = 1; zi < NUM_COLUMNS; zi++) {
+            g.drawLine(Window.getX(zi * xdelta) + Window.getWidth2()/2, Window.getY(Window.getHeight2() / 2),
+                    Window.getX(zi * xdelta)+ Window.getWidth2()/2, Window.getY(Window.getHeight2()));
+        }
+
+        g.drawLine(Window.getX(0), Window.getY(Window.getHeight2()), Window.getX(Window.getWidth2()), Window.getY(Window.getHeight2()));
 
 //Draw the tokens.    
         //shots
-        if (Player.getCurrentPlayer() == Player.getPlayers()[0]) {
+        
             for (int zi = 0; zi < NUM_ROWS; zi++) {
                 for (int zx = 0; zx < NUM_COLUMNS; zx++) {
                     if (p1Shots[zi][zx] != null) {
@@ -813,18 +847,18 @@ public class Board {
                     }
                 }
             }
-        } else {
+        
             for (int zi = 0; zi < NUM_ROWS; zi++) {
                 for (int zx = 0; zx < NUM_COLUMNS; zx++) {
                     if (p2Shots[zi][zx] != null) {
-                        p2Shots[zi][zx].draw(g, zi, zx, xdelta, ydelta);
+                        p2Shots[zi][zx].draw2(g, zi, zx, xdelta, ydelta);
                     }
                 }
             }
-        }
+        
 
         //ships
-        if (Player.getCurrentPlayer() == Player.getPlayers()[0]) {
+         
             for (int zi = 0; zi < NUM_ROWS; zi++) {
                 for (int zx = 0; zx < NUM_COLUMNS; zx++) {
                     if (p1Ships[zi][zx] != null) {
@@ -832,15 +866,15 @@ public class Board {
                     }
                 }
             }
-        } else {
+        
             for (int zi = 0; zi < NUM_ROWS; zi++) {
                 for (int zx = 0; zx < NUM_COLUMNS; zx++) {
                     if (p2Ships[zi][zx] != null) {
-                        p2Ships[zi][zx].drawShip(g, zi, zx, xdelta, ydelta);
+                        p2Ships[zi][zx].drawShip2(g, zi, zx, xdelta, ydelta);
                     }
                 }
             }
-        }
+        
 
     }
 

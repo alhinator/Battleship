@@ -13,6 +13,7 @@ class sound implements Runnable {
     Thread myThread;
     File soundFile;
     public boolean donePlaying = false;
+    public boolean halt;
     sound(String _name)
     {
         soundFile = new File(_name);
@@ -34,7 +35,9 @@ class sound implements Runnable {
         while (read > -1){
             read = ais.read(audioData,0,audioData.length);
             if (read >= 0) {
+                if (!halt){
                 source.write(audioData,0,read);
+                }
             }
         }
         donePlaying = true;
@@ -47,6 +50,8 @@ class sound implements Runnable {
             exc.printStackTrace();
         }
     }
+    
+    
 
 }
 

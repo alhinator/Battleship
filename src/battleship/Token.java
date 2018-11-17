@@ -43,6 +43,17 @@ public class Token {
        
 
     }
+    
+    public void draw2(Graphics2D g, int row, int column, int xdelta, int ydelta) {
+
+       g.setColor(color);
+       
+       
+            g.fillOval(Window.getX(column * xdelta +6)+ Window.getWidth2()/2, Window.getY(row * ydelta +3),
+                    xdelta-12, ydelta -6);
+       
+
+    }
 
     public boolean isUnremovable(){
         return unremovable;

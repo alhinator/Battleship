@@ -212,10 +212,10 @@ public class Battleship extends JFrame implements Runnable {
             return;
         }
 
-        //if (!finalScreen)
+        if (!finalScreen)
             Board.Draw(g); //drawing grid and tokens.
-        //else
-        //   Board.draw2(g);
+        else
+           Board.draw2(g);
         
         //drawing scores
         g.setColor(Player.getPlayers()[0].getColor());
@@ -278,7 +278,9 @@ public class Battleship extends JFrame implements Runnable {
             g.drawImage(rulesImg, 0, Window.getYBorder() + 5, Window.WINDOW_WIDTH_MED, Window.WINDOW_HEIGHT_MED - Window.getYBorder(), this);
         }
         if (yee){
-            g.drawImage(winImg, 0, Window.getYBorder() + 10, Window.WINDOW_WIDTH_YEE, Window.WINDOW_HEIGHT_YEE - Window.getYBorder(), this);            
+            
+            g.drawImage(winImg, 0, Window.getYBorder(), Window.WINDOW_WIDTH_YEE, Window.WINDOW_HEIGHT_YEE - Window.getYBorder(), this);
+            
         }
         
         
@@ -323,8 +325,14 @@ public class Battleship extends JFrame implements Runnable {
             thomasSound = new sound("./assets/Titlesong.wav");
         }
         
+        if (!freeze){
         if (thomasSound.donePlaying)       
-            thomasSound = new sound("./assets/Titlesong.wav");
+            if (!yee)
+                thomasSound = new sound("./assets/Titlesong.wav");
+            else
+                thomasSound = new sound("./assets/yee.wav");
+                
+        }
 
         //Checking for wins
         win = Board.checkWin();
@@ -332,6 +340,9 @@ public class Battleship extends JFrame implements Runnable {
             meow++;
         }
         if (meow == 1) {
+            if ((int)(Math.random()*100) == 0)
+                yee();
+            else
             setSize3();
            
         }
@@ -387,12 +398,18 @@ public class Battleship extends JFrame implements Runnable {
         frame.setSize(Window.WINDOW_WIDTH * 2, Window.WINDOW_HEIGHT);
         frame.setLocationRelativeTo(null);
         finalScreen = true;
+        freeze = true;
+        switchScreen=false;
+        startScreen=false;
     }
 
     public void yee(){
         frame.setSize(Window.WINDOW_WIDTH_YEE, Window.WINDOW_HEIGHT_YEE);
         frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         yee = true;
+        thomasSound.halt = true;
+        thomasSound  = new sound("./assets/yee.wav");
     }
     
 }
