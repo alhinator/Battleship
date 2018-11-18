@@ -206,4 +206,10 @@ public class Ship extends Token {
     public int getID() {
         return boxID;
    }
+    
+    
+    public void rotate(){
+    
+    //implementation here
+    }
 }

@@ -166,6 +166,17 @@ public class Battleship extends JFrame implements Runnable {
                     //if (finalScreen)
                         yee();
                 }    
+                
+                
+                if (e.VK_M == e.getKeyCode() && !yee){
+                    
+                     thomasSound.halt = !thomasSound.halt;
+                     if (thomasSound.halt == false)
+                         thomasSound = new sound("./assets/Titlesong.wav");
+                    
+                
+                }
+                        
                 repaint();
             }
         });
