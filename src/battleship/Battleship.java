@@ -159,8 +159,12 @@ public class Battleship extends JFrame implements Runnable {
 
                 } else if (e.VK_ESCAPE == e.getKeyCode()) {
                     //reset(); //WARNING! CAUSES NULLPOINTER
-                }
-                
+                } else if (e.VK_S == e.getKeyCode()) {
+                    if(Board.horizontal)
+                        Board.horizontal = false;
+                    else
+                        Board.horizontal = true;
+                } 
                 
                 if (e.VK_Y == e.getKeyCode()){
                     //if (finalScreen)
@@ -248,7 +252,18 @@ public class Battleship extends JFrame implements Runnable {
         else 
             g.drawString("READY", Window.getWidth2() + Window.getXBorder() - 80, 60);
             
-
+        if(Board.placingShips) {
+            if(Board.horizontal) {
+                g.setColor(Color.white);
+                g.setFont(new Font("Trebuchet MS", Font.PLAIN, 20));
+                g.drawString("HorizontalPlacing", Window.getWidth2() / 2, Window.getHeight2()/2);                
+            }
+            else {
+                g.setColor(Color.white);
+                g.setFont(new Font("Trebuchet MS", Font.PLAIN, 20));
+                g.drawString("VerticalPlacing", Window.getWidth2() / 2, Window.getHeight2()/2);
+            }
+        }
         //drawing switchScreens
         if (switchScreen) {
             g.setFont(new Font("Trebuchet MS", Font.PLAIN, 30));
