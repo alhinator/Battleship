@@ -51,8 +51,9 @@ public class Ship extends Token {
     public static int destroyerHealth_P2;
     
     public boolean horizontal;
-    Ship(Color _color, shipClass type, int _SHIP_BOARD) {
+    Ship(Color _color, shipClass type, int _SHIP_BOARD, boolean _horizontal) {
         super(_color);
+        horizontal = _horizontal;
         shipType = type;
         SHIP_BOARD = _SHIP_BOARD;
         if (shipType == shipClass.SCOUT) {
