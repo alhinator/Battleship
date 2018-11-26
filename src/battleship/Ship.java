@@ -25,6 +25,7 @@ public class Ship extends Token {
     public static Image Submarine = Toolkit.getDefaultToolkit().getImage("./assets/Submarine.png");
     public static Image Destroyer = Toolkit.getDefaultToolkit().getImage("./assets/Destroyer.png");
     public static Image Carrier = Toolkit.getDefaultToolkit().getImage("./assets/Carrier.png");
+     public static Image ScoutVert = Toolkit.getDefaultToolkit().getImage("./assets/ScoutVert.png");
 
     public static Image hitGif = Toolkit.getDefaultToolkit().getImage("./assets/hit.gif");
     public static Image missGif = Toolkit.getDefaultToolkit().getImage("./assets/miss.gif");
@@ -107,7 +108,7 @@ public class Ship extends Token {
                 if(horizontal)
                     g.drawImage(Scout, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta * 2, ydelta, super.mainClassInst);
                 else
-                    g.drawImage(Scout, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta * 2, ydelta, super.mainClassInst);                    
+                    g.drawImage(ScoutVert, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta * 2, ydelta, super.mainClassInst);                    
             } else if (shipType == shipClass.CRUISER && boxID == 1) {
                 if(horizontal)
                     g.drawImage(Cruiser, Window.getX(column * xdelta), Window.getY(row * ydelta + Window.getHeight2() / 2), xdelta * 3, ydelta, super.mainClassInst);
